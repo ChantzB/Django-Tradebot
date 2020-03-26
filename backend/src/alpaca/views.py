@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .keys import *
 import requests, json
+from rest_framework.decorators import api_view
+
 
 # Create your views here.
 def index(request):
