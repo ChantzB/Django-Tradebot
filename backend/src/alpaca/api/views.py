@@ -14,6 +14,7 @@ def get_account(request):
     r = requests.get(ACCOUNT_URL, headers=HEADERS)
     data = json.loads(r.content)
     return Response(data)
+    
 @api_view()
 def get_positions(request):
     BASE_URL = 'https://paper-api.alpaca.markets'
