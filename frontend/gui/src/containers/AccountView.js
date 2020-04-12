@@ -1,11 +1,11 @@
 import React from 'react';
-import Positions from '../components/Positions';
+import Account from '../components/Account';
 import axios from 'axios';
 
 const listData = [];
 for (let i = 0; i < 23; i++) {
   listData.push({
-    title: `ant design part ${i}`,
+    portfolio_value: `ant design part ${i}`,
     quantity: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
     bought_price:
       'Ant Design, a design language for background applications, is refined by Ant UED Team.',
@@ -14,17 +14,17 @@ for (let i = 0; i < 23; i++) {
   });
 }
 
-class PositionsList extends React.Component{
+class AccountList extends React.Component{
 
     state = {
-        positions: []
+        Account: []
     }
 
     componentDidMount() {
-        axios.get('http://127.0.0.1:8000/api/positions/')
+        axios.get('http://127.0.0.1:8000/api/account/')
             .then(res => {
                 this.setState({
-                    positions: res.data
+                    Account: res.data
                 });
                 console.log(res.data)
             })
@@ -32,9 +32,9 @@ class PositionsList extends React.Component{
 
     render() {
         return(
-            <Positions positions_data = {this.state.positions}/>
+            <Account account_data = {this.state.Account}/>
         )
     }
 }
 
-export default PositionsList
+export default AccountList
