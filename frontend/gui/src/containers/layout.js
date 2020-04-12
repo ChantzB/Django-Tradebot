@@ -13,17 +13,19 @@ const CustomLayout = (props) => {
             <Menu.Item key="3">nav 3</Menu.Item>
           </Menu>
         </Header>
+        <br/>
         <Content style={{ padding: '0 50px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
-          <div className="site-layout-content">
+          <div>
+            This is where portfolio value will go
+          </div>
+        </Content>
+        <Content style={{ padding: '50px' }}>
+          <h1>Portfolio</h1>
+            <div className="site-layout-content">
               {props.children}
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+        <Footer style={{ textAlign: 'center' }}>Trading Bot ©2020 Created by CSC 436</Footer>
       </Layout>
     
     )
