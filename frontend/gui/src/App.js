@@ -19,6 +19,7 @@ class App extends Component{
           <PositionsList />
           <br/>
           {/* <Chart/>*/}
+          <h1>Order History </h1>
            <OrderHistory/>  
         </CustomLayout>
       </div>
