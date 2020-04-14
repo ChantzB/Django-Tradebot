@@ -36,10 +36,12 @@ class AccountList extends React.Component{
         return(
         <Row gutter={16}>
          <Col span={12}>
-         <Statistic title="Portfolio Value" value={ account.equity } precision={2} />
-         <Button style={{ marginTop: 16 }} type="primary">
+         <h1>Portfolio Value</h1>
+         <Statistic title="Equity" value={ account.equity } precision={2} />
+         <Statistic title="Buying Power" value={ account.buying_power } precision={2} />
+         {/* <Button style={{ marginTop: 16 }} type="primary">
              Recharge
-         </Button>
+         </Button> */}
          </Col>
          </Row>
         )
