@@ -26,7 +26,7 @@ class PositionsList extends React.Component{
                 this.setState({
                     positions: res.data
                 });
-                console.log(res.dat)
+                console.log(res.data)
             })
     }
 
