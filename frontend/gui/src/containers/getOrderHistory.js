@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Table } from 'antd';
-const { Column, ColumnGroup } = Table;
+import { Table, List, Column} from 'antd';
+//const { Column, ColumnGroup } = Table;
 
 class OrderList extends Component {
 //go through and clean up code.. positions here should be different variable
-    constructor(props)
-    {
-        super(props);
-        this.state = {
-        userOrders: []
-        }
-    }
+
+state = {
+    userOrders: []
+}
 
     componentDidMount() {
         axios.get('http://127.0.0.1:8000/api/order_history/')
@@ -24,28 +21,43 @@ class OrderList extends Component {
     }
 
     render() {
-            const { userOrders } = this.state;
-            const order_List = userOrders.length ? (
-                userOrders.map(userOrders => {
-                    return (
-                        <Table> 
-                            <ColumnGroup title="Order History">
-                            <Column title="Symbol" dataIndex=  "symbol" key = "symbol"/>
-                            <Column title="Avg Cost" dataIndex= "price" key =  "price"/>
-                            </ColumnGroup>
-                        </Table> 
-                    )
-                })
-            ):(
-                <div className="center">No posts yet. Remember to run the backend server</div>
-            )
-        return (
-            <div className="container">
-                <h1 className="center">Order History</h1>
-                { order_List }
-            </div>
-        )
-    }
+    //Setting columns
+    const cols = [
+        {
+            title: 'Time',
+            width: 100,
+            dataIndex: 'transaction_time',
+          },
+          {
+            title: 'Symbol',
+            width: 100,
+            dataIndex: 'symbol',
+          },
+          {
+            title: 'Quantitiy',
+            dataIndex: 'qty',
+            width: 150,
+          },
+          {
+            title: 'Price',
+            dataIndex: 'price',
+            width: 150,
+          },
+          {
+            title: 'Status',
+            dataIndex: 'side',
+            width: 150,
+          },
+        ]
+
+        const { userOrders } = this.state;
+
+
+    return(
+    <Table columns={cols} dataSource={userOrders} pagination={{ pageSize: 50 }} scroll={{ y: 240 }} />
+        )
+    }
 }
+
 
 export default OrderList;
