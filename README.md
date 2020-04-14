@@ -1,3 +1,19 @@
+## IMPORTANT
+
+--setup--
+go to /frontend/gui/
+run npm install
+npm start
+
+go to /backend/src/
+pip install -r requirements.txt
+
+Copy and past the following into your .gitignore
+*.pyc
+/backend/env/
+/backend/.vscode/
+/.vscode/
+
 ## Django
 
 ## GET:
