@@ -50,8 +50,6 @@ class Stock extends React.Component {
   render() {
     return (
       <div id='Stock Plot'>
-        <h1>Landing</h1>
-        <h2>Stock Market</h2>
         <Plot
           data={[
             {
