@@ -3,9 +3,9 @@ import 'antd/dist/antd.css';
 
 import CustomLayout from './containers/layout';
 // import { render } from 'react-dom';
-import PositionsList from './containers/PositionsListView'
-import AccountList from './containers/AccountView'
-
+import PositionsList from './containers/PositionsListView';
+//import OrderHistory from './components/OrderHistory';
+import AccountList from './containers/AccountView';
 
 class App extends Component{
   render() {
