@@ -15,6 +15,7 @@ class App extends Component{
         <CustomLayout>
           <AccountList/>
           <br/>
+          <h1>Porfolio Assets</h1>
           <PositionsList />
           <br/>
           {/* <Chart/>
