@@ -36,7 +36,9 @@ class OrderList extends React.Component{
             const order_List = orders.length ? (
                 orders.map(positions => {
                     return (
-                        <div> </div>
+                        <Table> 
+                            
+                        </Table>
                     )
                 })
             ):(
