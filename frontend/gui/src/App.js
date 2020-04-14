@@ -14,7 +14,6 @@ class App extends Component{
         <CustomLayout>
           <AccountList/>
           <br/>
-          <h1>Portfolio</h1>
           <PositionsList />
         </CustomLayout>
       </div>

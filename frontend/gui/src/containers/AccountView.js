@@ -1,6 +1,7 @@
 import React from 'react';
-import Account from '../components/Account';
+// import Account from '../components/Account';
 import axios from 'axios';
+import { Statistic, Row, Col, Button } from 'antd';
 
 const listData = [];
 for (let i = 0; i < 23; i++) {
@@ -17,22 +18,42 @@ for (let i = 0; i < 23; i++) {
 class AccountList extends React.Component{
 
     state = {
-        Account: []
+        account: []
     }
 
     componentDidMount() {
         axios.get('http://127.0.0.1:8000/api/account/')
             .then(res => {
                 this.setState({
-                    Account: res.data
+                    account: res.data
                 });
                 console.log(res.data)
             })
     }
 
     render() {
+        const { account } = this.state;
+        const account_list = account.length ? (
+            account.map(account => {
+                return (
+                    <Row gutter={16}>
+                    <Col span={12}>
+                    <Statistic title="Portfolio Value" value={account.equity} precision={2} />
+                    <Button style={{ marginTop: 16 }} type="primary">
+                        Recharge
+                    </Button>
+                    </Col>
+                    </Row>
+                )
+            })
+        ):(
+            <div className="center>">No data yet</div>
+        )
         return(
-            <Account account_data = {this.state.Account}/>
+            <div className="containter">
+                <h1 className="center">equity</h1>
+                {  account_list }
+            </div>
         )
     }
 }
