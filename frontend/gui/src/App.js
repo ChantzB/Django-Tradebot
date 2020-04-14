@@ -6,7 +6,7 @@ import CustomLayout from './containers/layout';
 import PositionsList from './containers/PositionsListView';
 import OrderHistory from './containers/getOrderHistory';
 import AccountList from './containers/AccountView';
-import Chart from './components/portfolioChart';
+//import Chart from './components/portfolioChart';
 
 class App extends Component{
   render() {
@@ -14,11 +14,11 @@ class App extends Component{
       <div className="App">
         <CustomLayout>
           <AccountList/>
-          <Chart/>
           <br/>
           <h1>Porfolio Assets</h1>
           <PositionsList />
           <br/>
+          {/* <Chart/>*/}
           <h1>Order History </h1>
            <OrderHistory/>  
         </CustomLayout>
