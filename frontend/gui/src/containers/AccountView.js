@@ -3,18 +3,6 @@ import React from 'react';
 import axios from 'axios';
 import { Statistic, Row, Col, Button } from 'antd';
 
-const listData = [];
-for (let i = 0; i < 23; i++) {
-  listData.push({
-    portfolio_value: `ant design part ${i}`,
-    quantity: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    bought_price:
-      'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-    current_price:
-      'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-  });
-}
-
 class AccountList extends React.Component{
 
     state = {
@@ -39,9 +27,6 @@ class AccountList extends React.Component{
          <h1>Portfolio Value</h1>
          <Statistic title="Equity" value={ account.equity } precision={2} />
          <Statistic title="Buying Power" value={ account.buying_power } precision={2} />
-         {/* <Button style={{ marginTop: 16 }} type="primary">
-             Recharge
-         </Button> */}
          </Col>
          </Row>
         )
