@@ -1,7 +1,7 @@
 import React from 'react';
 // import Account from '../components/Account';
 import axios from 'axios';
-import { Statistic, Row, Col, Button } from 'antd';
+import { Statistic, Row, Col} from 'antd';
 
 class AccountList extends React.Component{
 

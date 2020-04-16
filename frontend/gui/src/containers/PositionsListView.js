@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { List, Card, Table, columns } from 'antd';
+import { Table } from 'antd';
 
 
 class PositionsList extends React.Component{

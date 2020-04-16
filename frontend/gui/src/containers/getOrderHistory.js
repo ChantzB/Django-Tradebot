@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Table, List, Column} from 'antd';
+import { Table} from 'antd';
 //const { Column, ColumnGroup } = Table;
 
 class OrderList extends Component {
