@@ -8,7 +8,10 @@ import AccountList from './containers/AccountView';
 import OrderFormView from './containers/createOrderView'
 import 'antd/dist/antd.css';
 import { Layout, Menu} from 'antd';
-const { Header} = Layout;
+//import Chart from './components/portfolioChart';
+//import StockClock from './components/countdownClock';
+import watchList from './containers/getWatchList';
+const { Header, Footer, Content } = Layout;
 
 
 class App extends Component{
@@ -27,14 +30,18 @@ class App extends Component{
             <Route path="/" exact render= {
               () => {
                 return (
+                  
                   <CustomLayout>
+                    {/* <StockClock/> */}
                     <AccountList/>
+                    {/* <Chart/> */}
                     <br/>
                     <h1>Porfolio Assets</h1>
                     <PositionsList />
                     <br/>
                     <h1>Order History </h1>
                     <OrderHistory/>
+                    <watchList/>
                   </CustomLayout>
                 );
               }
@@ -54,7 +61,9 @@ class App extends Component{
               () => {
                 return (
                   <CustomLayout>
-                    <h1>About</h1>
+                    <h1>Account </h1>
+                    <br/>
+                    
                   </CustomLayout>
                 );
               }
