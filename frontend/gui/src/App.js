@@ -61,7 +61,9 @@ class App extends Component{
               () => {
                 return (
                   <CustomLayout>
-                    <h1>About</h1>
+                    <h1>Account </h1>
+                    <br/>
+                    
                   </CustomLayout>
                 );
               }
