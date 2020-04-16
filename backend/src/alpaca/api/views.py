@@ -39,6 +39,6 @@ def order_history(request):
 def create_order(request):
     if request.method == 'POST':
         data = request.data
-        print(data['id'])
+        print(data['symbol'])
         return Response({"message": "Got an order", "data": request.data})
 
