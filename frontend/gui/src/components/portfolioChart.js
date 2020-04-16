@@ -1,73 +1,35 @@
-// import React from 'react';
-// import Plot from 'react-plotly.js';
+import React, { Component } from 'react';
+import { Chart, Axis, Tooltip, Geom } from 'bizcharts';
+import axios from 'axios';
 
-// class Stock extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       stockChartXValues: [],
-//       stockChartYValues: []
-//     }
-//   }
+class stockChart extends  Component{
 
-//   componentDidMount() {
-//     this.fetchStock();
-//   }
+    state = {
+        stockData : []
+    } 
+    
+        componentDidMount() {
+            axios.get('')
+                .then(res => {
+                    this.setState({
+                        stockData: res.data
+                    });
+                    console.log(res.data)
+                })
+        }
+    
 
-//   fetchStock() {
-//     const pointerToThis = this;
-//     console.log(pointerToThis);
-//     const API_KEY = 'HGJWFG4N8AQ66ICD';
-//     let StockSymbol = 'FB';
-//     let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol}&outputsize=compact&apikey=${API_KEY}`;
-//     let stockChartXValuesFunction = [];
-//     let stockChartYValuesFunction = [];
+render(){ return (
+<Chart height={400} data={stockData} forceFit>
+  <Axis name="month" />
+  <Axis name="Stock Price" label={{ formatter: val => `$${val}` }} />
+  <Tooltip crosshairs={{ type : "y" }} />
+  <Geom type="line" position="month*Stock Price" size={2} color={'city'} />
+  <Geom type='point' position="month*Stock Price" size={4} color={'city'} />
+</Chart>
+        )
+    };
+}
 
-//     fetch(API_Call)
-//       .then(
-//         function(response) {
-//           return response.json();
-//         }
-//       )
-//       .then(
-//         function(data) {
-//           console.log(data);
+export default stockChart;
 
-//           for (var key in data['Time Series (Daily)']) {
-//             stockChartXValuesFunction.push(key);
-//             stockChartYValuesFunction.push(data['Time Series (Daily)'][key]['1. open']);
-//           }
-
-//           // console.log(stockChartXValuesFunction);
-//           pointerToThis.setState({
-//             stockChartXValues: stockChartXValuesFunction,
-//             stockChartYValues: stockChartYValuesFunction
-//           });
-//         }
-//       )
-//   }
-
-//   render() {
-//     return (
-//       <div id='Stock Plot'>
-//         <h1>Landing</h1>
-//         <h2>Stock Market</h2>
-//         <Plot
-//           data={[
-//             {
-//               x: this.state.stockChartXValues,
-//               y: this.state.stockChartYValues,
-//               type: 'bar',
-//               mode: 'lines+markers',
-//               marker: {color: 'blue'},
-//               //showlegend: false,
-//             }
-//           ]}
-//           layout={{width: 720, height: 440, responsive: true, showlegend: false,title: 'Stock Plot'}}
-//         />
-//       </div>
-//     )
-//   }
-// }
-
-// export default Stock;
