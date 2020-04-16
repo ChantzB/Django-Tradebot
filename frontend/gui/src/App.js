@@ -8,8 +8,9 @@ import AccountList from './containers/AccountView';
 import OrderFormView from './containers/createOrderView'
 import 'antd/dist/antd.css';
 import { Layout, Menu} from 'antd';
-import Chart from './components/portfolioChart';
-// import StockClock from './components/countdownClock';
+//import Chart from './components/portfolioChart';
+//import StockClock from './components/countdownClock';
+import watchList from './containers/getWatchList';
 const { Header, Footer, Content } = Layout;
 
 
@@ -33,13 +34,14 @@ class App extends Component{
                   <CustomLayout>
                     {/* <StockClock/> */}
                     <AccountList/>
-                    <Chart/>
+                    {/* <Chart/> */}
                     <br/>
                     <h1>Porfolio Assets</h1>
                     <PositionsList />
                     <br/>
                     <h1>Order History </h1>
                     <OrderHistory/>
+                    <watchList/>
                   </CustomLayout>
                 );
               }
