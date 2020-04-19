@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Table} from 'antd';
-//const { Column, ColumnGroup } = Table;
 
 class OrderList extends Component {
 //go through and clean up code.. positions here should be different variable
@@ -30,23 +29,23 @@ state = {
           },
           {
             title: 'Symbol',
-            width: 100,
+            width: 40,
             dataIndex: 'symbol',
           },
           {
             title: 'Quantitiy',
             dataIndex: 'qty',
-            width: 150,
+            width: 60,
           },
           {
             title: 'Price',
             dataIndex: 'price',
-            width: 150,
+            width: 60,
           },
           {
             title: 'Status',
             dataIndex: 'side',
-            width: 150,
+            width: 50,
           },
         ]
 
@@ -54,7 +53,7 @@ state = {
 
 
     return(
-    <Table columns={cols} dataSource={userOrders} pagination={{ pageSize: 50 }} scroll={{ y: 240 }} />
+    <Table columns={cols} dataSource={userOrders} pagination={{ pageSize: 10 }} scroll={{ y: 220 }} />
         )
     }
 }
