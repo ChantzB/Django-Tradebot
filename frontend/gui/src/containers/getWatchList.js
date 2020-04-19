@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Table} from 'antd';
-//const { Column, ColumnGroup } = Table;
-
-class OrderList extends Component {
-//go through and clean up code.. positions here should be different variable
+class WatchList extends Component {
 
 state = {
     userWatchList: []
@@ -34,18 +31,8 @@ state = {
             dataIndex: 'symbol',
           },
           {
-            title: 'Quantitiy',
-            dataIndex: 'qty',
-            width: 150,
-          },
-          {
             title: 'Price',
             dataIndex: 'price',
-            width: 150,
-          },
-          {
-            title: 'Status',
-            dataIndex: 'side',
             width: 150,
           },
         ]
@@ -59,4 +46,4 @@ state = {
     }
 }
 
-export default OrderList;
+export default WatchList;
