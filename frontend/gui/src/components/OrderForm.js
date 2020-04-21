@@ -4,8 +4,7 @@ import axios from 'axios';
 import {
   Form,
   Input,
-  Button,
-  Select,
+  Button
 } from 'antd';
 
 class OrderForm extends React.Component { 
@@ -27,7 +26,7 @@ class OrderForm extends React.Component {
      })
   }
   
-  handleFormSubmit = (event, requestType) => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
     
     const order = {

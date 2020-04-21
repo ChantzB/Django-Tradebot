@@ -9,7 +9,7 @@ class OrderFormView extends React.Component{
         // const { account } = this.state;
         return(
         <div>
-            <OrderForm requestType="post"/>
+            <OrderForm />
         </div>
         )
     }
