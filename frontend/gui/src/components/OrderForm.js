@@ -10,26 +10,38 @@ import {
 
 class OrderForm extends React.Component { 
 
+  state = {
+    symbol: '',
+    qty: '',
+    type: '',
+    time_in_force:'',
+  }
+
+  handleChange = event => {
+    this.setState({ 
+      symbol: event.target.symbol,
+      qty: event.target.qty,
+      type: event.target.type,
+      time_in_force: event.target.time_in_force,
+
+     })
+  }
+  
   handleFormSubmit = (event, requestType) => {
-    const symbol = event.target.elements.symbol.value;
-    const qty = event.target.elements.qty.value;
-    const type = event.target.elements.type.value;
-    const time_in_force = event.target.elements.time_in_force.value;
-
-    switch (requestType) {
-      case 'post':
-         return axios.post('http://127.0.0.1:8000/api/create_order/', {
-          symbol: symbol,
-          qty: qty,
-          side: 'buy',
-          type: type, 
-          time_in_force: time_in_force
-        })
-        .then(res => console.log(res))
-        .catch(error => console.err(error));
-    }
+    event.preventDefault();
     
+    const order = {
+      symbol: this.state.symbol,
+      qty: this.state.qty,
+      type: this.state.type,
+      time_in_force: this.state.time_in_force
+    };
 
+    axios.post('http://127.0.0.1:8000/api/create_order/', { order })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
   }
 
   render(){
@@ -38,27 +50,27 @@ class OrderForm extends React.Component {
         <h2><center>Create an Order</center></h2>
         <br/>
         <Form
-          onSubmit={(event) => this.handleFormSubmit(event, this.props.requestType)}
+          onSubmit={this.handleFormSubmit}
           labelCol={{ span: 4 }}
           wrapperCol={{ span: 14 }}
           layout="horizontal"
           >
           <Form.Item label="Stock Symbol">
-            <Input name="symbol" placeholder="symbol"/>
+            <Input name="symbol" placeholder="symbol" onChange={this.handleChange}/>
           </Form.Item>
           <Form.Item label="Quantity">
-            <Input name="qty" placeholder="quantity"/>
+            <Input name="qty" placeholder="quantity" onChange={this.handleChange}/>
           </Form.Item>
           <Form.Item label="Type">
-            <Input name="type" placeholder="type" />
+            <Input name="type" placeholder="type" onChange={this.handleChange}/>
           </Form.Item>
           <Form.Item label="Time in Force">
-            <Input name="time_in_force" placeholder="type" />
+            <Input name="time_in_force" placeholder="type" onChange={this.handleChange}/>
             gtc: "Good till canceled" <br/>
             day: Order expires at end of day
           </Form.Item>
           <Form.Item label=" ">
-            <Button type="primary" htmlType="submit">Place Order</Button>
+            <Button type="submit" htmlType="submit">Place Order</Button>
           </Form.Item>
         </Form>
       </div>
