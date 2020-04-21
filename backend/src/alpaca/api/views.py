@@ -3,6 +3,7 @@ import requests, json
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .keys import *
+import yfinance as yf
 
 
 @api_view()
@@ -45,5 +46,10 @@ def create_order(request):
         r = requests.post(ORDERS_URL, json=data, headers=HEADERS)
         print(r)
         return Response({"message": "Got an order", "data": request.data})
+
+@api_view()
+def market_data(request):
+    msft = yf.Ticker("MSFT")
+    return Response(msft.history(period="1mo"))
 
 
