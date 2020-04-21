@@ -8,9 +8,9 @@ import AccountList from './containers/AccountView';
 import OrderFormView from './containers/createOrderView'
 import 'antd/dist/antd.css';
 import { Layout, Menu} from 'antd';
+import watchList from './containers/getWatchList';
 //import Chart from './components/portfolioChart';
 //import StockClock from './components/countdownClock';
-import watchList from './containers/getWatchList';
 const { Header, Footer, Content } = Layout;
 
 
@@ -24,7 +24,7 @@ class App extends Component{
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
             <Menu.Item key="1"><Link to='/'>Portfolio</Link></Menu.Item>
             <Menu.Item key="2"><Link to='/orders'>Orders</Link></Menu.Item>
-            <Menu.Item key="3"><Link to='/about'>About</Link></Menu.Item>
+            <Menu.Item key="3"><Link to='/about'>Account</Link></Menu.Item>
             </Menu>
           </Header>
             <Route path="/" exact render= {
@@ -40,8 +40,9 @@ class App extends Component{
                     <PositionsList />
                     <br/>
                     <h1>Order History </h1>
-                    <OrderHistory/>
-                    <watchList/>
+                    <OrderHistory />
+                    <br/>
+                    <watchList />
                   </CustomLayout>
                 );
               }
