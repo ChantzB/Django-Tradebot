@@ -63,7 +63,7 @@ class OrderForm extends React.Component {
           <Form.Item label="Type">
             <Input name="type" placeholder="type" onChange={this.handleChange}/>
           </Form.Item>
-          <Form.Item label="Time in Force">
+          <Form.Item label="GTC/Day">
             <Input name="time_in_force" placeholder="type" onChange={this.handleChange}/>
             gtc: "Good till canceled" <br/>
             day: Order expires at end of day
