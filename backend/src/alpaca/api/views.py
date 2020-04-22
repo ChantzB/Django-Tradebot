@@ -44,12 +44,48 @@ def create_order(request):
     if request.method == 'POST':
         data = request.data
         r = requests.post(ORDERS_URL, json=data, headers=HEADERS)
-        print(r)
         return Response({"message": "Got an order", "data": request.data})
 
 @api_view()
 def market_data(request):
     msft = yf.Ticker("MSFT")
     return Response(msft.history(period="1mo"))
+
+def make_recommendation(rec_list):
+    #function to return single recommendation
+    Buy_count = [] #contains all 'buy', 'overweight', 'outperform', 'strong buy'
+    Sell_count = [] #contains all 'sell', 'underwieght', 'under perform','market perform'
+    Hold_count = [] #contains all 'hold', 'equal-weight,  'neutral'
+    Extra_count = []
+    for i in rec_list:
+        if i in ['Buy', 'Overweight', 'Outperform', 'Strong Buy']:
+            Buy_count.append(i)
+        elif i in ['Sell', 'Underweight', 'Underperform', 'Market Perform']:
+            Sell_count.append(i)
+        elif i in ['Hold', 'Equal-Weight', 'Neutral']:
+            Hold_count.append(i)
+        else:
+            Extra_count.append(i)
+        if len(Buy_count) > len(Sell_count):
+            if len(Buy_count) > len(Hold_count):
+                return ({'Recommendation' : "Buy"})
+            else:
+                return ({'Recommendation' : "Hold"})
+        else:
+            if len(Sell_count) > len(Hold_count):
+                return ({'Recommendation' : "Sell"})
+            else:
+                return ({'Hold'})
+
+@api_view(['POST', 'GET'])
+def recommendation(request):
+    if request.method == 'POST':
+        data = request.data
+        symbol = data['Symbol'] 
+        finance_data = yf.Ticker(symbol)
+        recommendations = finance_data.recommendations
+        return Response(make_recommendation(recommendations['To Grade']))
+    elif request.method == 'GET':
+        return Response(None)
 
 
