@@ -43,7 +43,8 @@ def create_order(request):
     ORDERS_URL = '{}/v2/orders'.format(BASE_URL)
     if request.method == 'POST':
         data = request.data
-        r = requests.post(ORDERS_URL, json=data, headers=HEADERS)
+        order = data['order']
+        requests.post(ORDERS_URL, json=order, headers=HEADERS)
         return Response({"message": "Got an order", "data": request.data})
 
 @api_view()
