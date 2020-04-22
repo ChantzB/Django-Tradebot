@@ -25,8 +25,14 @@ account endpoint: http://127.0.0.1:8000/api/account/
 
 order history: http://127.0.0.1:8000/api/order_history/
 
+receive recommendation: http://127.0.0.1:8000/api/recommendation/
+
+market data: http://127.0.0.1:8000/api/recommendation/
+
 ## POST:
 create order endpoint: http://127.0.0.1:8000/api/create_order/
+
+get recommendation: http://127.0.0.1:8000/api/recommendation/
 
 
 ## Available Scripts
