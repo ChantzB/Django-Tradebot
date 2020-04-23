@@ -64,7 +64,7 @@ class App extends Component{
                   <CustomLayout>
                     <h1>Account </h1>
                     <br/>
-                    
+                    <AccountList/>
                   </CustomLayout>
                 );
               }

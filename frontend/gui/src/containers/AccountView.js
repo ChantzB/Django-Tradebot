@@ -1,5 +1,4 @@
 import React from 'react';
-// import Account from '../components/Account';
 import axios from 'axios';
 import { Statistic, Row, Col} from 'antd';
 
