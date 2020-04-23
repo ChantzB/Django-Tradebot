@@ -67,16 +67,14 @@ def make_recommendation(rec_list):
             Hold_count.append(i)
         else:
             Extra_count.append(i)
-        if len(Buy_count) > len(Sell_count):
-            if len(Buy_count) > len(Hold_count):
-                return ({'Recommendation' : "Buy"})
-            else:
-                return ({'Recommendation' : "Hold"})
+        if len(Buy_count) > len(Sell_count) and len(Buy_count) > len(Hold_count):
+            return ({'Recommendation' : "Buy"})
+        elif len(Buy_count) > len(Sell_count) and len(Buy_count) < len(Hold_count):
+            return ({'Recommendation' : "Hold"})
+        elif len(Sell_count) > len(Hold_count):
+            return ({'Recommendation' : "Sell"})
         else:
-            if len(Sell_count) > len(Hold_count):
-                return ({'Recommendation' : "Sell"})
-            else:
-                return ({'Hold'})
+            return ({'Hold'})
 
 @api_view(['POST', 'GET'])
 def recommendation(request):

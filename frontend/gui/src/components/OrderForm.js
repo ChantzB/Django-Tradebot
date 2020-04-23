@@ -12,36 +12,31 @@ class OrderForm extends React.Component {
   state = {
     symbol: '',
     qty: '',
+    side: 'buy',
     type: '',
     time_in_force:'',
   }
 
-  handleChange = event => {
+  handleChange(event){
     this.setState({ 
-      symbol: event.target.symbol,
-      qty: event.target.qty,
-      type: event.target.type,
-      time_in_force: event.target.time_in_force,
-
+      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value,
      })
   }
   
-  handleFormSubmit = (event) => {
+  handleFormSubmit(event){
     event.preventDefault();
     
-    const order = {
-      symbol: this.state.symbol,
-      qty: this.state.qty,
-      type: this.state.type,
-      time_in_force: this.state.time_in_force
-    };
+    const order = this.state
 
     axios.post('http://127.0.0.1:8000/api/create_order/', { order })
       .then(res => {
         console.log(res);
         console.log(res.data);
       })
-  }
+  };
 
   render(){
     return (
@@ -55,21 +50,21 @@ class OrderForm extends React.Component {
           layout="horizontal"
           >
           <Form.Item label="Stock Symbol">
-            <Input name="symbol" placeholder="symbol" onChange={this.handleChange}/>
+            <Input name="symbol" placeholder="symbol" onChange={(event) => this.handleChange(event)}/>
           </Form.Item>
           <Form.Item label="Quantity">
-            <Input name="qty" placeholder="quantity" onChange={this.handleChange}/>
+            <Input name="qty" placeholder="quantity" onChange={(event) => this.handleChange(event)}/>
           </Form.Item>
           <Form.Item label="Type">
-            <Input name="type" placeholder="type" onChange={this.handleChange}/>
+            <Input name="type" placeholder="type" onChange={(event) => this.handleChange(event)}/>
           </Form.Item>
-          <Form.Item label="GTC/Day">
-            <Input name="time_in_force" placeholder="type" onChange={this.handleChange}/>
+          <Form.Item label="Time in Force">
+            <Input name="time_in_force" placeholder="type" onChange={(event) => this.handleChange(event)}/>
             gtc: "Good till canceled" <br/>
             day: Order expires at end of day
           </Form.Item>
           <Form.Item label=" ">
-            <Button type="submit" htmlType="submit">Place Order</Button>
+            <Button type="button" onClick={(event) => this.handleFormSubmit(event)}>Place Order</Button>
           </Form.Item>
         </Form>
       </div>
