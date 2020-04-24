@@ -16,15 +16,20 @@ def get_account(request):
     data = json.loads(r.content)
     return Response(data)
     
-@api_view()
-def get_positions(request):
+@api_view(['POST','GET'])
+def positions(request):
     BASE_URL = 'https://paper-api.alpaca.markets'
     HEADERS = {"APCA-API-KEY-ID" : API_KEY, "APCA-API-SECRET-KEY" : SECRET_KEY}
-    POSITIONS_URL = '{}/v2/positions'.format(BASE_URL)
-
-    r = requests.get(POSITIONS_URL, headers=HEADERS)
-    data = json.loads(r.content)
-    return Response(data)
+    if request.post == "GET":
+        POSITIONS_URL = '{}/v2/positions'.format(BASE_URL)
+        r = requests.get(POSITIONS_URL, headers=HEADERS)
+        data = json.loads(r.content)
+        return Response(data)
+    else: #POST
+        data = request.data
+        symbol = data['Symbol'] 
+        CLOSE_POSITION = '{}/v2/positions/{}'.format(BASE_URL, symbol)
+        requests.delete(CLOSE_POSITION, headers=HEADERS)
 
 @api_view()
 def order_history(request):
