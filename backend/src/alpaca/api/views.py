@@ -50,7 +50,7 @@ def create_order(request):
         data = request.data
         order = data['order']
         requests.post(ORDERS_URL, json=order, headers=HEADERS)
-        return Response({"message": "Got an order", "data": request.data})
+        return Response({"message": "Got an order"})
 
 @api_view()
 def market_data(request):
