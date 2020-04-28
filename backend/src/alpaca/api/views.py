@@ -52,18 +52,41 @@ def create_order(request):
         requests.post(ORDERS_URL, json=order, headers=HEADERS)
         return Response({"message": "Got an order", "data": request.data})
 
+@api_view(['POST', 'GET'])
+def watchlist(request):
+    watchlist_recommendations = []
+    # asset_list = []
+    BASE_URL = 'https://paper-api.alpaca.markets'
+    HEADERS = {"APCA-API-KEY-ID" : API_KEY, "APCA-API-SECRET-KEY" : SECRET_KEY}    
+    WATCHLIST_URL = '{}/v2/watchlists/6d70c540-0900-4372-9ea6-88f7d88e52e9'.format(BASE_URL)
+    r = requests.get(WATCHLIST_URL, headers=HEADERS)
+    data = json.loads(r.content)
+    assets = data['assets']
+    for asset in assets:
+        try: 
+            symbol = asset['symbol']
+            our_recommendation = make_recommendation(symbol)
+            watchlist_recommendations.append(our_recommendation)
+        except:
+            watchlist_recommendations.append({"Recommendation" : "NONE"})
+    watchlist = [{"assets":assets, "recommedations":watchlist_recommendations}]
+    return Response(watchlist)
+    
+
 @api_view()
 def market_data(request):
     msft = yf.Ticker("MSFT")
     return Response(msft.history(period="1mo"))
 
-def make_recommendation(rec_list):
+def make_recommendation(symbol):
     #function to return single recommendation
+    finance_data = yf.Ticker(symbol)
+    recommendations = finance_data.recommendations['To Grade']
     Buy_count = [] #contains all 'buy', 'overweight', 'outperform', 'strong buy'
     Sell_count = [] #contains all 'sell', 'underwieght', 'under perform','market perform'
     Hold_count = [] #contains all 'hold', 'equal-weight,  'neutral'
     Extra_count = []
-    for i in rec_list:
+    for i in recommendations:
         if i in ['Buy', 'Overweight', 'Outperform', 'Strong Buy']:
             Buy_count.append(i)
         elif i in ['Sell', 'Underweight', 'Underperform', 'Market Perform']:
@@ -79,17 +102,13 @@ def make_recommendation(rec_list):
         elif len(Sell_count) > len(Hold_count):
             return ({'Recommendation' : "Sell"})
         else:
-            return ({'Hold'})
+            return ({'Recommendation' : 'Hold'})
 
 @api_view(['POST', 'GET'])
 def recommendation(request):
     if request.method == 'POST':
         data = request.data
         symbol = data['Symbol'] 
-        finance_data = yf.Ticker(symbol)
-        recommendations = finance_data.recommendations
-        return Response(make_recommendation(recommendations['To Grade']))
+        return Response(make_recommendation(symbol))
     elif request.method == 'GET':
         return Response(None)
-
-
