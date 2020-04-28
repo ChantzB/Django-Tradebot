@@ -30,7 +30,7 @@ def positions(request):
         symbol = data['Symbol'] 
         CLOSE_POSITION = '{}/v2/positions/{}'.format(BASE_URL, symbol)
         requests.delete(CLOSE_POSITION, headers=HEADERS)
-
+        return Response({"message": "Position Sold"})
 @api_view()
 def order_history(request):
     BASE_URL = 'https://paper-api.alpaca.markets'
