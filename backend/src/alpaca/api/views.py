@@ -66,11 +66,10 @@ def watchlist(request):
         try: 
             symbol = asset['symbol']
             our_recommendation = make_recommendation(symbol)
-            watchlist_recommendations.append(our_recommendation)
+            watchlist_recommendations.append({"symbol" : symbol, "recommendation" : our_recommendation})
         except:
-            watchlist_recommendations.append({"Recommendation" : "NONE"})
-    watchlist = [{"assets":assets, "recommedations":watchlist_recommendations}]
-    return Response(watchlist)
+            watchlist_recommendations.append({"symbol" : symbol, "recommendation" : "NONE"})
+    return Response(watchlist_recommendations)
     
 
 @api_view()
@@ -96,13 +95,13 @@ def make_recommendation(symbol):
         else:
             Extra_count.append(i)
         if len(Buy_count) > len(Sell_count) and len(Buy_count) > len(Hold_count):
-            return ({'Recommendation' : "Buy"})
+            return ("Buy")
         elif len(Buy_count) > len(Sell_count) and len(Buy_count) < len(Hold_count):
-            return ({'Recommendation' : "Hold"})
+            return ("Hold")
         elif len(Sell_count) > len(Hold_count):
-            return ({'Recommendation' : "Sell"})
+            return ("Sell")
         else:
-            return ({'Recommendation' : 'Hold'})
+            return ("Hold")
 
 @api_view(['POST', 'GET'])
 def recommendation(request):
