@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
+import WatchList from './components/watchlist';
 import CustomLayout from './containers/layout';
 import PositionsList from './containers/PositionsListView';
 import OrderHistory from './containers/getOrderHistory';
@@ -8,7 +9,6 @@ import AccountList from './containers/AccountView';
 import OrderFormView from './containers/createOrderView'
 import 'antd/dist/antd.css';
 import { Layout, Menu} from 'antd';
-import watchList from './containers/getWatchList';
 //import Chart from './components/portfolioChart';
 //import StockClock from './components/countdownClock';
 const { Header, Footer, Content } = Layout;
@@ -33,8 +33,9 @@ class App extends Component{
                   
                   <CustomLayout>
                     {/* <StockClock/> */}
+                    <WatchList/>
                     <AccountList/>
-                    {/* <Chart/> */}
+                    <br/>
                     <br/>
                     <h1>Porfolio Assets</h1>
                     <PositionsList />

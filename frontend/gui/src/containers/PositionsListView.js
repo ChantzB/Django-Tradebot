@@ -69,22 +69,6 @@ class PositionsList extends React.Component{
   },                
             ]
             const { positions } = this.state;
-            // const position_List = positions.length ? (
-            //     positions.map(positions => {
-            //             <List grid={{ gutter: 16, column: 6 }}>
-            //                 <List.Item >
-            //                 <Card title={positions.symbol}>
-            //                     Quantity: {positions.qty} <br/>
-            //                     Buy Price: {positions.avg_entry_price} <br/>
-            //                     Current Price: {positions.current_price} <br/>
-            //                     Profit: {positions.unrealized_pl} <br/>
-            //                 </Card>
-            //                 </List.Item>
-            //             </List>
-            //     })
-            // ):(
-            //     <div className="Center">No posts yet. Remember to run the backend server</div>
-            // )
         return (
             <Table columns={columns} dataSource={positions}  pagination={{ pageSize: 10 }} scroll={{ y: 240 }} />
         )
