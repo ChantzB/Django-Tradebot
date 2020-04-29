@@ -56,7 +56,7 @@ class WatchList extends React.Component{
         return(
             <div style={{float:"right"}}>
             <h2>Watch List</h2>
-            <Table style={{width:150, float:"right", paddingRight:200}} 
+            <Table style={{width:150, float:"right", paddingRight:250}} 
                 bordered="true"
                 class="watchlist" 
                 columns={columns} 
