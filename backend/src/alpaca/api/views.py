@@ -31,6 +31,7 @@ def positions(request):
         CLOSE_POSITION = '{}/v2/positions/{}'.format(BASE_URL, symbol)
         requests.delete(CLOSE_POSITION, headers=HEADERS)
         return Response({"message": "Position Sold"})
+
 @api_view()
 def order_history(request):
     BASE_URL = 'https://paper-api.alpaca.markets'
@@ -74,12 +75,15 @@ def watchlist(request):
 
 @api_view(['POST'])
 def market_data(request):
+    response_data = []
     post = request.data
     data = post['market_search']
     symbol = data['Symbol']
     time = data['Time']
     market_data = yf.Ticker(symbol)
-    return Response(market_data.history(period=time))
+    plot_data = market_data.history(period=time)
+    response_data.append({"Date" : plot_data.index, "Data" : plot_data})
+    return Response(response_data)
 
 def make_recommendation(symbol):
     #function to return single recommendation
