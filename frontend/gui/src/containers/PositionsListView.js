@@ -70,7 +70,9 @@ class PositionsList extends React.Component{
             ]
             const { positions } = this.state;
         return (
-            <Table columns={columns} dataSource={positions}  pagination={{ pageSize: 10 }} scroll={{ y: 240 }} />
+            <Table 
+            style={{width:'75%'}}
+            columns={columns} dataSource={positions}  pagination={{ pageSize: 10 }} scroll={{ y: 240 }} />
         )
         
     }
