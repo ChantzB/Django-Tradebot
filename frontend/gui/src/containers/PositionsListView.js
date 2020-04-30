@@ -55,7 +55,7 @@ class PositionsList extends React.Component{
                 },
                 {title: 'Trade',
                 key: 'action',
-                width: 100,
+                width: 150,
                 render: (text, record) => (
                 <Radio.Group value={size} onChange={this.handleSizeChange}>
                     <Radio.Button value = 'small' type="primary" block>

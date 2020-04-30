@@ -53,7 +53,9 @@ state = {
 
 
     return(
-    <Table columns={cols} dataSource={userOrders} pagination={{ pageSize: 10 }} scroll={{ y: 220 }} />
+    <Table 
+    style={{width:"75%"}}
+    columns={cols} dataSource={userOrders} pagination={{ pageSize: 10 }} scroll={{ y: 220 }} />
         )
     }
 }
