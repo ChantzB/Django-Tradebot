@@ -1,0 +1,6 @@
+Market data API test
+{
+"Symbol" : "AAPL",
+"Time" : "3mo"
+}
+

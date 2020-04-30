@@ -72,10 +72,13 @@ def watchlist(request):
     return Response(watchlist_recommendations)
     
 
-@api_view()
+@api_view(['POST'])
 def market_data(request):
-    msft = yf.Ticker("MSFT")
-    return Response(msft.history(period="1mo"))
+    data = request.data
+    symbol = data['Symbol']
+    time = data['Time']
+    market_data = yf.Ticker(symbol)
+    return Response(market_data.history(period=time))
 
 def make_recommendation(symbol):
     #function to return single recommendation
