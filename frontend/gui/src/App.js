@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 import WatchList from './components/watchlist';
+import SearchButton from './components/searchbutton';
 import CustomLayout from './containers/layout';
 import PositionsList from './containers/PositionsListView';
 import OrderHistory from './containers/getOrderHistory';
@@ -33,6 +34,7 @@ class App extends Component{
                   
                   <CustomLayout>
                     {/* <StockClock/> */}
+                    <center><SearchButton/></center>
                     <WatchList/>
                     <AccountList/>
                     <br/>

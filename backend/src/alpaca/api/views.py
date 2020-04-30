@@ -74,7 +74,8 @@ def watchlist(request):
 
 @api_view(['POST'])
 def market_data(request):
-    data = request.data
+    post = request.data
+    data = post['market_search']
     symbol = data['Symbol']
     time = data['Time']
     market_data = yf.Ticker(symbol)
