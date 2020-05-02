@@ -39,27 +39,27 @@ class PositionsList extends React.Component{
                 {
                     title: 'Symbol',
                     dataIndex: 'symbol',
-                    width: 150,
+                    width: 100,
                 },
                 {
                     title: 'Quantity',
                     dataIndex: 'qty',
-                    width: 150,
+                    width: 100,
                 },               
                 {
                     title: 'Buy Price',
                     dataIndex: 'avg_entry_price',
-                    width: 150,
+                    width: 100,
                 },
                 {
                     title: 'Current Price',
                     dataIndex: 'current_price',
-                    width: 150,
+                    width: 100,
                 },
                 {
                     title: 'Profit',
                     dataIndex: 'unrealized_pl',
-                    width: 150,
+                    width: 100,
                 },
                 {title: 'Trade',
                 key: 'action',
@@ -93,7 +93,7 @@ class PositionsList extends React.Component{
             const { positions } = this.state;
         return (
             <Table 
-            style={{width:'105%'}}
+            style={{width:'75%'}}
             columns={columns} dataSource={positions}  pagination={{ pageSize: 10 }} scroll={{ y: 240 }} />
         )
         
