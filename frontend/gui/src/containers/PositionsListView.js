@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Table, Button, Radio } from 'antd';
+import { Table, Radio, Result, Button } from 'antd';
 
 
 class PositionsList extends React.Component{
@@ -69,6 +69,20 @@ class PositionsList extends React.Component{
                     <Radio.Button value = 'small' type="primary" block onClick ={() => this.sellMe()}> 
                      Sell 
                     </Radio.Button>
+
+
+                    {/* <Result
+    status="success"
+    title="Successfully Purchased Cloud Server ECS!"
+    subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+    extra={[
+      <Button type="primary" key="console">
+        Go Console
+      </Button>,
+      <Button key="buy">Sell Again</Button>,
+    ]} */}
+  />,
+
                     <Radio.Button value = 'small' type="primary" block>
                      Buy
                     </Radio.Button>
