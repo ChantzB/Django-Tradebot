@@ -52,8 +52,6 @@ class App extends Component{
               () => {
                 return (
                   <CustomLayout>
-                    <h1>Create Order</h1>
-                    <br/>
                     <OrderFormView />
                   </CustomLayout>
                 );

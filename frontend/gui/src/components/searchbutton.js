@@ -15,7 +15,7 @@ class SearchButton extends React.Component {
     state = {
       data: [],
       Symbol: '',
-      Time: '1d',
+      Time: '1mo',
     }
   
     handleChange(event){
