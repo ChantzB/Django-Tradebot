@@ -1,6 +1,8 @@
 import React from 'react';
 import { Layout, Menu} from 'antd';
+import StockClock from '../components/countdownClock';
 const { Header, Footer, Content } = Layout;
+
 
 const CustomLayout = (props) => {
     return (
@@ -8,6 +10,7 @@ const CustomLayout = (props) => {
         <br/>
         <Content style={{ padding: '50px' }}>
             <div className="site-layout-content">
+              <StockClock/>
               {props.children}
           </div>
         </Content>
