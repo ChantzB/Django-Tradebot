@@ -1,13 +1,31 @@
 import React from 'react';
 import axios from 'axios';
-import { Table, Tag } from 'antd'
+import { Table, Input, Form, Button } from 'antd'
 
 
 class WatchList extends React.Component{
     state = {
-        watchlist : []
+        watchlist : [],
+        symbol: ''
 
     }
+
+    handleChange(event){
+        this.setState({ 
+          [event.target.name]: event.target.value
+         })
+      }
+
+    handleFormSubmit(event){
+    event.preventDefault();
+    
+    const Symbol = this.state.symbol
+
+    axios.post('http://127.0.0.1:8000/api/watchlist/', { Symbol })
+        .then(res => {
+            console.log(Symbol)
+        })
+    };
 
     componentDidMount() {
         axios.get('http://127.0.0.1:8000/api/watchlist/')
@@ -33,7 +51,6 @@ class WatchList extends React.Component{
                 title: 'Recommendation',
                 key: 'recommendation',
                 dataIndex: 'recommendation',
-                tags: 'recommendation',
                 align:"center",
                 // render: tags => (
                 //   <span>
@@ -54,14 +71,23 @@ class WatchList extends React.Component{
         ]
         const { watchlist } = this.state;
         return(
-            <div style={{float:"right"}}>
-            <h2>Watch List</h2>
-            <Table style={{width:150, float:"right", paddingRight:250, backgroundColor:'#E8E8E8'}} 
-                bordered="true"
-                class="watchlist" 
-                columns={columns} 
-                dataSource={watchlist} 
-                pagination={false}/>
+            <div style={{float:"right", paddingRight:30,}}>
+            <center><h2>Watch List</h2></center>
+            <Form onSubmit={this.handleFormSubmit}>
+                <Input.Group>
+                <Input style={{width:"75%"}} name="symbol" placeholder="Add to watch" onChange={(event) => this.handleChange(event)}/>
+                <Button style={{width:"25%"}} type="button" onClick={(event) => this.handleFormSubmit(event)}>Add</Button>
+                <br/>
+                <br/>
+                <Table 
+                    style={{Color:'#E8E8E8'}} 
+                    bordered="true"
+                    class="watchlist" 
+                    columns={columns} 
+                    dataSource={watchlist} 
+                    pagination={false}/>
+                </Input.Group>
+            </Form>
             </div>
         )
     }
