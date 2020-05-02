@@ -55,24 +55,30 @@ def create_order(request):
 
 @api_view(['POST', 'GET'])
 def watchlist(request):
-    watchlist_recommendations = []
-    # asset_list = []
     BASE_URL = 'https://paper-api.alpaca.markets'
     HEADERS = {"APCA-API-KEY-ID" : API_KEY, "APCA-API-SECRET-KEY" : SECRET_KEY}    
     WATCHLIST_URL = '{}/v2/watchlists/6d70c540-0900-4372-9ea6-88f7d88e52e9'.format(BASE_URL)
-    r = requests.get(WATCHLIST_URL, headers=HEADERS)
-    data = json.loads(r.content)
-    assets = data['assets']
-    for asset in assets:
-        try: 
-            symbol = asset['symbol']
-            our_recommendation = make_recommendation(symbol)
-            watchlist_recommendations.append({"symbol" : symbol, "recommendation" : our_recommendation})
+    if request.method =='GET':
+        watchlist_recommendations = []
+        r = requests.get(WATCHLIST_URL, headers=HEADERS)
+        data = json.loads(r.content)
+        assets = data['assets']
+        for asset in assets:
+            try: 
+                symbol = asset['symbol']
+                our_recommendation = make_recommendation(symbol)
+                watchlist_recommendations.append({"symbol" : symbol, "recommendation" : our_recommendation})
+            except:
+                watchlist_recommendations.append({"symbol" : symbol, "recommendation" : "NONE"})
+        return Response(watchlist_recommendations)
+    if request.method == 'POST':
+        try:
+            data = request.data
+            requests.post(WATCHLIST_URL, json=data, headers=HEADERS)
+            return Response({"message" : "Added to watchlist"})
         except:
-            watchlist_recommendations.append({"symbol" : symbol, "recommendation" : "NONE"})
-    return Response(watchlist_recommendations)
+            return Response({"Error" : "Not added to watchlist"})
     
-
 @api_view(['POST'])
 def market_data(request):
     response_data = []
