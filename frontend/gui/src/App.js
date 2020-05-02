@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
-import WatchList from './components/watchlist';
-import SearchButton from './components/searchbutton';
 import CustomLayout from './containers/layout';
-import PositionsList from './containers/PositionsListView';
-import OrderHistory from './containers/getOrderHistory';
-import AccountList from './containers/AccountView';
-import OrderFormView from './containers/createOrderView'
+import OrdersView from './containers/OrdersView';
+import PortfolioViewTop from './containers/portfolioViewTop';
+import PortfolioViewBottom from './containers/portfolioViewBotttom';
 import 'antd/dist/antd.css';
 import { Layout, Menu} from 'antd';
 import Chart from './components/stockCharts/index';
@@ -32,18 +29,8 @@ class App extends Component{
                 return (
                   
                   <CustomLayout>
-                    <center><SearchButton/></center>
-                    <WatchList/>
-                    <AccountList/>
-                    <br/>
-                    <br/>
-                    <h1>Porfolio Assets</h1>
-                    <PositionsList />
-                    <br/>
-                    <h1>Order History </h1>
-                    <OrderHistory />
-                    <br/>
-                    <watchList />
+                    <PortfolioViewTop/>
+                    <PortfolioViewBottom/>
                   </CustomLayout>
                 );
               }
@@ -52,7 +39,7 @@ class App extends Component{
               () => {
                 return (
                   <CustomLayout>
-                    <OrderFormView />
+                    <OrdersView />
                   </CustomLayout>
                 );
               }
@@ -63,7 +50,7 @@ class App extends Component{
                   <CustomLayout>
                     <h1>Account </h1>
                     <br/>
-                    <AccountList/>
+                    {/* <AccountList/> */}
                   </CustomLayout>
                 );
               }
