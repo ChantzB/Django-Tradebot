@@ -1,10 +1,15 @@
 import React from 'react';
-import CountDown from 'ant-design-pro/lib/CountDown';
+import Clock from 'react-live-clock';
 
-const targetTime = new Date().getTime() + 3900000;
 
-    const Clock = () => (
-        <CountDown style={{ fontSize: 20 }} target={targetTime} />
-    )
+class TickingClock extends React.Component {
+    render() {
+        return(
+        <div>
+        <Clock format={'HH:mm:ss'} ticking={true} timezone={'US/Eastern'} />
+        </div>
+        )
+    }
+}
 
-    export default Clock;
+export default TickingClock;
