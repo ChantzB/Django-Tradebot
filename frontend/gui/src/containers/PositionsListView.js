@@ -4,7 +4,6 @@ import { Table, Button, Radio } from 'antd';
 
 
 class PositionsList extends React.Component{
-//go through and clean up code.. positions here should be different variable
     state = {
         positions: [],
         size : 'small',
@@ -22,6 +21,15 @@ class PositionsList extends React.Component{
 
     handleSizeChange = e => {
         this.setState({ size: e.target.value });
+      };
+
+      constructor(props) {
+        super(props);
+        this.sellMe = this.sellMe.bind(this);
+      };
+    
+      sellMe() {
+        alert('Sold!');
       };
 
     render() {
@@ -58,7 +66,7 @@ class PositionsList extends React.Component{
                 width: 150,
                 render: (text, record) => (
                 <Radio.Group value={size} onChange={this.handleSizeChange}>
-                    <Radio.Button value = 'small' type="primary" block>
+                    <Radio.Button value = 'small' type="primary" block onClick ={() => this.sellMe()}> 
                      Sell 
                     </Radio.Button>
                     <Radio.Button value = 'small' type="primary" block>
@@ -71,7 +79,7 @@ class PositionsList extends React.Component{
             const { positions } = this.state;
         return (
             <Table 
-            style={{width:'75%'}}
+            style={{width:'105%'}}
             columns={columns} dataSource={positions}  pagination={{ pageSize: 10 }} scroll={{ y: 240 }} />
         )
         

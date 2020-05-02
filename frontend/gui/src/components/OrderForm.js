@@ -48,6 +48,7 @@ class OrderForm extends React.Component {
           labelCol={{ span: 4 }}
           wrapperCol={{ span: 14 }}
           layout="horizontal"
+          size = "small" 
           >
           <Form.Item label="Stock Symbol">
             <Input name="symbol" placeholder="symbol" onChange={(event) => this.handleChange(event)}/>
