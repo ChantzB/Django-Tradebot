@@ -70,7 +70,6 @@ class PositionsList extends React.Component{
                      Sell 
                     </Radio.Button>
 
-
                     {/* <Result
     status="success"
     title="Successfully Purchased Cloud Server ECS!"
@@ -81,8 +80,7 @@ class PositionsList extends React.Component{
       </Button>,
       <Button key="buy">Sell Again</Button>,
     ]} */}
-  />,
-
+    
                     <Radio.Button value = 'small' type="primary" block>
                      Buy
                     </Radio.Button>
