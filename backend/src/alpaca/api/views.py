@@ -79,17 +79,23 @@ def watchlist(request):
         except:
             return Response({"Error" : "Not added to watchlist"})
     
-@api_view(['POST'])
+@api_view(['POST', 'GET'])
 def market_data(request):
-    response_data = []
-    post = request.data
-    data = post['market_search']
-    symbol = data['Symbol']
-    time = data['Time']
-    market_data = yf.Ticker(symbol)
-    plot_data = market_data.history(period=time)
-    response_data.append({"Date" : plot_data.index, "Data" : plot_data})
-    return Response(response_data)
+    if request.method == 'POST':
+        response_data = []
+        post = request.data
+        data = post['market_search']
+        symbol = data['Symbol']
+        time = data['Time']
+        market_data = yf.Ticker(symbol)
+        plot_data = market_data.history(period=time)
+        response_data.append({"Date" : plot_data.index, "Data" : plot_data})
+        return Response(response_data)
+    if request.method == 'GET':
+        symbol = "AAPL"
+        market_data = yf.Ticker(symbol)
+        plot_data = market_data.history(period="3mo")
+        return Response(plot_data)
 
 def make_recommendation(symbol):
     #function to return single recommendation
