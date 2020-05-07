@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .keys import *
 import yfinance as yf
+from alpaca.api.alpaca_functions import chart_data
 
 
 @api_view()
@@ -82,19 +83,16 @@ def watchlist(request):
 @api_view(['POST', 'GET'])
 def market_data(request):
     if request.method == 'POST':
-        response_data = []
         post = request.data
         data = post['market_search']
         symbol = data['Symbol']
         time = data['Time']
-        market_data = yf.Ticker(symbol)
-        plot_data = market_data.history(period=time)
-        response_data.append({"Date" : plot_data.index, "Data" : plot_data})
-        return Response(response_data)
-    if request.method == 'GET':
+        pdata = chart_data(symbol, time)
+        return Response(pdata)
+    else:
         symbol = "AAPL"
         market_data = yf.Ticker(symbol)
-        plot_data = market_data.history(period="3mo")
+        plot_data = market_data.history(period="1d")
         return Response(plot_data)
 
 def make_recommendation(symbol):
