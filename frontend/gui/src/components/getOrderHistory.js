@@ -53,9 +53,12 @@ state = {
 
 
     return(
+      <div style={{ paddingTop: "50px", width:'80%', float:"left"}}>
+                <h1> Order History</h1>
     <Table 
     style={{width:"75%"}}
     columns={cols} dataSource={userOrders} pagination={{ pageSize: 10 }} scroll={{ y: 220 }} />
+    </div>
         )
     }
 }
