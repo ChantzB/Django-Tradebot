@@ -7,6 +7,9 @@ import {
     Select,
     Button,
   } from 'antd';
+import {
+LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+} from 'recharts';
   
 const { Option } = Select;
 
@@ -36,12 +39,12 @@ class SearchButton extends React.Component {
             data: res.data
         });
           // console.log(market_search);
-          console.log(res.data[0]);
+          console.log(res.data);
         })
     };
   
     render(){
-      
+        const data = this.state.data
       return (
         <div>
           <Form
@@ -59,9 +62,23 @@ class SearchButton extends React.Component {
                 type="button" onClick={(event) => this.handleFormSubmit(event)}>Search</Button>
                 </Input.Group>
             </Form.Item>
-
           </Form>
-    
+          <LineChart
+            width={500}
+            height={300}
+            data={data}
+            margin={{
+              top: 5, right: 30, left: 20, bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="Open" stroke="#8884d8" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="Close" stroke="#82ca9d" />
+          </LineChart>
         </div>
       );
     }
