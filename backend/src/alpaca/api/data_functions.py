@@ -1,5 +1,5 @@
 import yfinance as yf
-import requests
+import requests,json
 import pandas as pd
 from datetime import datetime
 
@@ -11,6 +11,13 @@ def chart_data(symbol, time):
     df = df.fillna('')
     data = df.to_dict('records')
     return (data)
+
+def portfolio_history(data):
+    df = pd.DataFrame(data)
+    df['timestamp'] = pd.to_datetime(df['timestamp'], unit='s')
+    df = df.fillna('')
+    data_dict = df.to_dict('records')
+    return(data_dict)
 
 def make_recommendation(symbol):
     #function to return single recommendation

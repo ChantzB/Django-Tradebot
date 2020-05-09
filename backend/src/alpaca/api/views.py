@@ -4,23 +4,20 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .keys import *
 import yfinance as yf
-from alpaca.api.data_functions import chart_data, make_recommendation
+from alpaca.api.data_functions import chart_data, make_recommendation, portfolio_history
 
+BASE_URL = 'https://paper-api.alpaca.markets'
+HEADERS = {"APCA-API-KEY-ID" : API_KEY, "APCA-API-SECRET-KEY" : SECRET_KEY}
 
 @api_view()
 def get_account(request):
-    BASE_URL = 'https://paper-api.alpaca.markets'
     ACCOUNT_URL = '{}/v2/account'.format(BASE_URL)
-    HEADERS = {"APCA-API-KEY-ID" : API_KEY, "APCA-API-SECRET-KEY" : SECRET_KEY}
-
     r = requests.get(ACCOUNT_URL, headers=HEADERS)
     data = json.loads(r.content)
     return Response(data)
     
 @api_view(['POST','GET'])
 def positions(request):
-    BASE_URL = 'https://paper-api.alpaca.markets'
-    HEADERS = {"APCA-API-KEY-ID" : API_KEY, "APCA-API-SECRET-KEY" : SECRET_KEY}
     if request.method == "GET":
         POSITIONS_URL = '{}/v2/positions'.format(BASE_URL)
         r = requests.get(POSITIONS_URL, headers=HEADERS)
@@ -35,8 +32,6 @@ def positions(request):
 
 @api_view()
 def order_history(request):
-    BASE_URL = 'https://paper-api.alpaca.markets'
-    HEADERS = {"APCA-API-KEY-ID" : API_KEY, "APCA-API-SECRET-KEY" : SECRET_KEY}
     HISTORY_URL = '{}/v2/account/activities'.format(BASE_URL)
 
     r = requests.get(HISTORY_URL,  headers=HEADERS)
@@ -45,8 +40,6 @@ def order_history(request):
 
 @api_view(['POST'])
 def create_order(request):
-    BASE_URL = 'https://paper-api.alpaca.markets'
-    HEADERS = {"APCA-API-KEY-ID" : API_KEY, "APCA-API-SECRET-KEY" : SECRET_KEY}
     ORDERS_URL = '{}/v2/orders'.format(BASE_URL)
     if request.method == 'POST':
         data = request.data
@@ -55,9 +48,7 @@ def create_order(request):
         return Response({"message": "Got an order", "data": request.data})
 
 @api_view(['POST', 'GET'])
-def watchlist(request):
-    BASE_URL = 'https://paper-api.alpaca.markets'
-    HEADERS = {"APCA-API-KEY-ID" : API_KEY, "APCA-API-SECRET-KEY" : SECRET_KEY}    
+def watchlist(request): 
     WATCHLIST_URL = '{}/v2/watchlists/6d70c540-0900-4372-9ea6-88f7d88e52e9'.format(BASE_URL)
     if request.method =='GET':
         watchlist_recommendations = []
@@ -90,10 +81,15 @@ def market_data(request):
         pdata = chart_data(symbol, time)
         return Response(pdata)
     else:
-        symbol = "AAPL"
-        market_data = yf.Ticker(symbol)
-        plot_data = market_data.history(period="1d")
-        return Response(plot_data)
+        URL = '{}/v2/account/portfolio/history'.format(BASE_URL)
+        data = {
+            'period' : '3M',
+            'timeframe' : '1D'
+        }
+        r = requests.get(URL, params=data, headers=HEADERS)
+        data = json.loads(r.content)
+        pdata = portfolio_history(data)
+        return Response(pdata)
 
 @api_view(['POST', 'GET'])
 def recommendation(request):
