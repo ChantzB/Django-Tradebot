@@ -40,15 +40,17 @@ class OrderForm extends React.Component {
 
   render(){
     return (
-      <div style={{float: "right"}}>
+      <div style={{float:"right", width:"25%", height:"450px", border:"ridge"}}>
         <h2><center>Create an Order</center></h2>
+        <br/>
         <br/>
         <Form
           onSubmit={this.handleFormSubmit}
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 10}}
+          labelCol={{ span:8 }}
+          wrapperCol={{ span: 12}}
           layout="horizontal"
           size = "large" 
+          style={{height:"600px"}}
           >
           <Form.Item label="Stock Symbol">
             <Input name="symbol" placeholder="symbol" onChange={(event) => this.handleChange(event)}/>

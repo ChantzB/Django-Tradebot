@@ -3,7 +3,6 @@ import axios from 'axios';
 import {
     Form,
     Input,
-    AutoComplete,
     Select,
     Button,
   } from 'antd';
@@ -21,6 +20,15 @@ class SearchButton extends React.Component {
       Time: '1mo',
     }
   
+    componentDidMount() {
+      axios.get('http://127.0.0.1:8000/api/market_data/')
+          .then(res => {
+              this.setState({
+                  data: res.data
+              });
+          })
+    }
+
     handleChange(event){
       this.setState({ 
         [event.target.name]: event.target.value,
@@ -32,7 +40,7 @@ class SearchButton extends React.Component {
       event.preventDefault();
       
       const market_search = this.state
-  
+
       axios.post('http://127.0.0.1:8000/api/market_data/', { market_search })
         .then(res => {
           this.setState({
@@ -49,6 +57,7 @@ class SearchButton extends React.Component {
         <div>
           <Form
             onSubmit={this.handleFormSubmit}
+            style={{width:"50%"}}
           >
             <Form.Item rules={[{ required: true }]}>
                 <Input.Group compact>
@@ -64,8 +73,9 @@ class SearchButton extends React.Component {
             </Form.Item>
           </Form>
           <LineChart
-            width={500}
-            height={300}
+            style={{float:"left"}}
+            width={1200}
+            height={700}
             data={data}
             margin={{
               top: 5, right: 30, left: 20, bottom: 5,
@@ -76,6 +86,7 @@ class SearchButton extends React.Component {
             <YAxis />
             <Tooltip />
             <Legend />
+            <Line type="monotone" dataKey="equity" stroke="#8884d8" activeDot={{ r: 8 }} />
             <Line type="monotone" dataKey="Open" stroke="#8884d8" activeDot={{ r: 8 }} />
             <Line type="monotone" dataKey="Close" stroke="#82ca9d" />
           </LineChart>

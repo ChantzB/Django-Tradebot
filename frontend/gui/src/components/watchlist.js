@@ -52,26 +52,11 @@ class WatchList extends React.Component{
                 key: 'recommendation',
                 dataIndex: 'recommendation',
                 align:"center",
-                // render: tags => (
-                //   <span>
-                //     {tags.map(tag => {
-                //       let color = tag.length > 5 ? 'geekblue' : 'green';
-                //       if (tag === 'Sell') {
-                //         color = 'volcano';
-                //       }
-                //       return (
-                //         <Tag color={color} key={tag}>
-                //           {tag.toUpperCase()}
-                //         </Tag>
-                //       );
-                //     })}
-                //   </span>
-                // ),
               }
         ]
         const { watchlist } = this.state;
         return(
-            <div style={{float:"right", paddingRight:30,}}>
+            <div style={{float:"right", width:"25%", height:"450px", border:"ridge"}}>
             <center><h2>Watch List</h2></center>
             <Form onSubmit={this.handleFormSubmit}>
                 <Input.Group>

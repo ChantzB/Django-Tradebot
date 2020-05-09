@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 import CustomLayout from './containers/layout';
-import OrdersView from './containers/OrdersView';
-import PortfolioViewTop from './containers/portfolioViewTop';
+import OrderView from './containers/OrderView';
+import TopView from './containers/TopView';
 import PortfolioViewBottom from './containers/portfolioViewBotttom';
 import 'antd/dist/antd.css';
 import { Layout, Menu} from 'antd';
-import Chart from './components/stockCharts/index';
 const { Header, Footer, Content } = Layout;
 
 
@@ -29,7 +28,7 @@ class App extends Component{
                 return (
                   
                   <CustomLayout>
-                    <PortfolioViewTop/>
+                    <TopView/>
                     <PortfolioViewBottom/>
                   </CustomLayout>
                 );
@@ -39,7 +38,7 @@ class App extends Component{
               () => {
                 return (
                   <CustomLayout>
-                    <OrdersView />
+                    <OrderView />
                   </CustomLayout>
                 );
               }

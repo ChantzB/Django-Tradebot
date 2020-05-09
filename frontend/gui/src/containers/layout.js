@@ -1,7 +1,6 @@
 import React from 'react';
 import { Layout, Menu} from 'antd';
 import StockClock from '../components/countdownClock';
-import SearchButton from '../components/searchbutton';
 const { Header, Footer, Content } = Layout;
 
 
@@ -11,7 +10,6 @@ const CustomLayout = (props) => {
         <br/>
         <Content>
             <div className="site-layout-content">
-              <center><SearchButton/></center>
               <StockClock/>
               {props.children}
             </div>

@@ -93,7 +93,7 @@ class PositionsList extends React.Component{
             <div style={{ paddingTop: "50px", width:'80%', float:"left"}}>
                 <h1>Assets</h1>
                 <Table 
-                style={{width:'75%'}}
+                style={{width:'82%'}}
                 columns={columns} dataSource={positions}  pagination={{ pageSize: 10 }} scroll={{ y: 240 }} />
             </div>
         )
