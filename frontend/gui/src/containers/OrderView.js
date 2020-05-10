@@ -81,8 +81,8 @@ class OrderView extends React.Component {
             <div style={{padding:'40px'}}>
                 <OrderForm style={{float:"right"}}/>
                 <LineChart
-                    style={{float:"left", border:'inset'}}
-                    width={1200}
+                    style={{paddingRight:"", float:"left", border:'inset', borderWidth:"thick", boxShadow:"5px 10px 5px grey"}}
+                    width={1000}
                     height={500}
                     data={data}
                     margin={{
@@ -94,9 +94,9 @@ class OrderView extends React.Component {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Line type="monotone" dataKey="equity" stroke="red" activeDot={{ r: 8 }} />
-                    <Line type="monotone" dataKey="Open" stroke="#8884d8" activeDot={{ r: 8 }} />
-                    <Line type="monotone" dataKey="Close" stroke="#82ca9d" />
+                    <Line type="monotone" dataKey="equity" stroke="red" width={8} strokeWidth={1} width={0} fill="red" direction="y"/>
+                    <Line type="monotone" dataKey="Open" width={8} strokeWidth={1} width={0} fill="blue" direction="y" />
+                    <Line type="monotone" dataKey="Close" stroke="Green" fill="green"/>
                 </LineChart>
             </div>
         </div>

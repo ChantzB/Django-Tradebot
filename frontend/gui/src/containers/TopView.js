@@ -9,7 +9,7 @@ import {
     Button,
   } from 'antd';
 import {
-LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Dot
+LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Dot, Bar
 } from 'recharts';
 
   
@@ -77,10 +77,10 @@ class TopView extends React.Component {
             <div style={{paddingLeft:'40px', float:"left", width:"75%"}}>
                 <AccountList/>
             </div>
-            <div style={{padding:'40px'}}>
+            <div style={{padding:'40px', }}>
                 <WatchList/>
                 <LineChart
-                    style={{float:"left", border:'inset'}}
+                    style={{paddingRight:"", float:"left", border:'inset', borderWidth:"thick", boxShadow:"5px 10px 5px grey"}}
                     width={1000}
                     height={500}
                     data={data}
@@ -88,7 +88,7 @@ class TopView extends React.Component {
                     top: 30, right: 30, left: 0, bottom: 30,
                     }}
                 >
-                    <CartesianGrid strokeDasharray="3 3" />
+                    <CartesianGrid strokeDasharray="" stroke="eee"/>
                     <XAxis dataKey="date" />
                     <YAxis/>
                     <Tooltip />

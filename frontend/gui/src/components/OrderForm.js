@@ -40,7 +40,7 @@ class OrderForm extends React.Component {
 
   render(){
     return (
-      <div style={{float:"right", width:"25%", height:"450px", border:"ridge"}}>
+      <div style={{float:"right", width:"25%", height:"500px",  border:"inset", borderWidth:"thick", boxShadow:"5px 10px 5px grey"}}>
         <h2><center>Create an Order</center></h2>
         <br/>
         <br/>

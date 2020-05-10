@@ -15,9 +15,14 @@ class App extends Component{
     return(
       <Router>
         <div className="App">
-          <Header>
+          {/* <Header style={{backgroundColor:"#001f4d"}}>
+            <center><h1 style={{fontFamily:"Arial, Helvetica, sans-serif", color:"white", fontSize:"40px", backgroundColor:"#001f4d", backdropFilter:"4px"}}>
+              Trading Hub
+            </h1></center>
+          </Header> */}
+          <Header style={{backgroundColor:"#001f4d"}}>
             <div className="logo" />
-            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
+            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} style={{color:"white", backgroundColor:"#001f4d"}}>
             <Menu.Item key="1"><Link to='/'>Portfolio</Link></Menu.Item>
             <Menu.Item key="2"><Link to='/orders'>Orders</Link></Menu.Item>
             <Menu.Item key="3"><Link to='/about'>Account</Link></Menu.Item>
