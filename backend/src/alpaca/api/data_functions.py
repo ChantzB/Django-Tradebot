@@ -11,7 +11,6 @@ def chart_data(symbol, time):
     df['date'] = df['date'].dt.date
     df = df.fillna('')
     data = df.to_dict('records')
-    print(data)
     return (data)
 
 def portfolio_history(data):
