@@ -14,7 +14,7 @@ def chart_data(symbol, time):
 
 def portfolio_history(data):
     df = pd.DataFrame(data)
-    df['timestamp'] = pd.to_datetime(df['timestamp'], unit='s')
+    df['date'] = pd.to_datetime(df['timestamp'], unit='s')
     df = df.fillna('')
     data_dict = df.to_dict('records')
     return(data_dict)
