@@ -84,7 +84,7 @@ class TopView extends React.Component {
                 <WatchList/>
                 <LineChart
                     style={{float:"left", border:'inset'}}
-                    width={1200}
+                    width={1000}
                     height={500}
                     data={data}
                     margin={{
