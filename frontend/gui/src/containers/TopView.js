@@ -9,7 +9,7 @@ import {
     Button,
   } from 'antd';
 import {
-LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Dot
 } from 'recharts';
 
   
@@ -59,10 +59,7 @@ class TopView extends React.Component {
       return (
         <div>
             <div>
-                <center><Form
-                    onSubmit={this.handleFormSubmit}
-                    style={{width:"50%"}}
-                >
+                <center><Form onSubmit={this.handleFormSubmit} style={{width:"50%"}}>
                     <Form.Item rules={[{ required: true }]}>
                         <Input.Group compact>
                         <Input name="Symbol" placeholder="Stock Search" onChange={(event) => this.handleChange(event)} style={{ width: '20%', backgroundColor: '#E8E8E8' }} />
@@ -93,12 +90,12 @@ class TopView extends React.Component {
                 >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="date" />
-                    <YAxis />
+                    <YAxis/>
                     <Tooltip />
-                    <Legend />
-                    <Line type="monotone" dataKey="equity" stroke="red" activeDot={{ r: 8 }} />
-                    <Line type="monotone" dataKey="Open" stroke="#8884d8" activeDot={{ r: 8 }} />
-                    <Line type="monotone" dataKey="Close" stroke="#82ca9d" />
+                    <Legend type="line"/>
+                    <Line type="monotone" dataKey="equity" stroke="red" width={8} strokeWidth={1} width={0} fill="red" direction="y"/>
+                    <Line type="monotone" dataKey="Open" width={8} strokeWidth={1} width={0} fill="blue" direction="y" />
+                    <Line type="monotone" dataKey="Close" stroke="Green" fill="green"/>
                 </LineChart>
             </div>
         </div>

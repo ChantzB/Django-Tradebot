@@ -60,10 +60,7 @@ class OrderView extends React.Component {
       return (
         <div>
             <div>
-                <center><Form
-                    onSubmit={this.handleFormSubmit}
-                    style={{width:"50%"}}
-                >
+                <center><Form onSubmit={this.handleFormSubmit} style={{width:"50%"}}>
                     <Form.Item rules={[{ required: true }]}>
                         <Input.Group compact>
                         <Input name="Symbol" placeholder="Stock Search" onChange={(event) => this.handleChange(event)} style={{ width: '20%', backgroundColor: '#E8E8E8' }} />

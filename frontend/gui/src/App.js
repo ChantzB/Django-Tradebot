@@ -7,7 +7,7 @@ import TopView from './containers/TopView';
 import PortfolioViewBottom from './containers/portfolioViewBotttom';
 import 'antd/dist/antd.css';
 import { Layout, Menu} from 'antd';
-const { Header, Footer, Content } = Layout;
+const { Header } = Layout;
 
 
 class App extends Component{
