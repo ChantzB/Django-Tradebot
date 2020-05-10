@@ -7,7 +7,7 @@ import {
     Button,
   } from 'antd';
 import {
-LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend
 } from 'recharts';
   
 const { Option } = Select;

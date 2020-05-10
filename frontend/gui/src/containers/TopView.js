@@ -9,7 +9,7 @@ import {
     Button,
   } from 'antd';
 import {
-LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Dot, Bar
+LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Dot, Bar, 
 } from 'recharts';
 
   
