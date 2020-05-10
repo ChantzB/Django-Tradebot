@@ -7,9 +7,11 @@ def chart_data(symbol, time):
     market_data = yf.Ticker(symbol)
     plot_data = market_data.history(period=time)
     df = pd.DataFrame(plot_data)
-    df['date'] = pd.to_datetime(df.index, format='%Y-%m-%d %H:%M:%S')
+    df['date'] = pd.to_datetime(df.index, format='%d-%m')
+    df['date'] = df['date'].dt.date
     df = df.fillna('')
     data = df.to_dict('records')
+    print(data)
     return (data)
 
 def portfolio_history(data):
