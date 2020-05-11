@@ -20,7 +20,7 @@ class TopView extends React.Component {
     state = {
       data: [],
       Symbol: '',
-      Time: '1mo',
+      Time: '',
     }
   
     componentDidMount() {
@@ -63,14 +63,12 @@ class TopView extends React.Component {
                     <Form.Item rules={[{ required: true }]}>
                         <Input.Group compact>
                         <Input name="Symbol" placeholder="Stock Search" onChange={(event) => this.handleChange(event)} style={{ width: '20%', backgroundColor: '#E8E8E8' }} />
-                        <Select name="Time"
-                        onChange={this.handleChange} defaultValue="1mo">
-                            <Option value="1mo">1 Month</Option>
-                            <Option value="3mo">3 Months</Option>
-                        </Select>
+                        <Input name="Time" placeholder="Time" onChange={(event) => this.handleChange(event)} style={{ width: '10%', backgroundColor: '#E8E8E8' }} >
+                        </Input>
                         <Button style={{}}
                         type="button" onClick={(event) => this.handleFormSubmit(event)}>Search</Button>
                         </Input.Group>
+                        <p style={{fontSize:"12px"}}>Valid Times: 1mo, 3mo, 6mo, 1y</p>
                     </Form.Item>
                 </Form></center>
             </div>
