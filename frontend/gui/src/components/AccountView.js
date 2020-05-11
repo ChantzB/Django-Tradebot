@@ -21,11 +21,11 @@ class AccountList extends React.Component{
     render() {
         const { account } = this.state;
         return(
-            <div>
+            <div style={{width:"93%", border:'inset', borderWidth:"thick", boxShadow:" 5px 10px 5px grey", backgroundColor:"gainsboro"}}>
                 <h1>Portfolio Value</h1>
                 <Row gutter={16}>
                 <Statistic title="Equity" value={ account.equity } precision={2} style={{padding:"10px"}}/>
-                <Statistic title="Buying Power" value={ account.buying_power } precision={2} style={{padding:"10px"}}/>
+                <Statistic title="Buying Power" value={ account.buying_power } precision={2} style={{paddingLeft:"50px", paddingTop:"10px"}}/>
                 {/* </Col> */}
                 </Row>
             </div>

@@ -90,7 +90,7 @@ class PositionsList extends React.Component{
             ]
             const { positions } = this.state;
         return (
-            <div style={{ paddingTop: "50px", width:'80%', float:"left"}}>
+            <div style={{ paddingTop: "50px", width:'87%', float:"left"}}>
                 <h1>Assets</h1>
                 <Table 
                 style={{width:'82%'}}
