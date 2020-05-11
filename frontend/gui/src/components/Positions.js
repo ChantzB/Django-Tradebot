@@ -90,11 +90,13 @@ class PositionsList extends React.Component{
             ]
             const { positions } = this.state;
         return (
-            <div style={{ paddingTop: "50px", width:'87%', float:"left"}}>
-                <h1>Assets</h1>
-                <Table 
-                style={{width:'82%'}}
-                columns={columns} dataSource={positions}  pagination={{ pageSize: 10 }} scroll={{ y: 240 }} />
+            <div>
+                <div style={{width:'71%', float:"left"}}>
+                    <h1 style={{ paddingTop:"20px", paddingBottom:"10px"}}>Assets</h1>
+                    <Table 
+                    style={{width:'100%', border:'inset', borderWidth:"thick", boxShadow:" 5px 10px 5px grey", backgroundColor:"gainsboro"}}
+                    columns={columns} dataSource={positions}  pagination={{ pageSize: 10 }} scroll={{ y: 240 }} />
+                </div>
             </div>
         )
         
