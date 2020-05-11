@@ -69,7 +69,7 @@ class PositionsList extends React.Component{
                 width: 150,
                 render: (text, record) => (
                 <Radio.Group value={size} onChange={this.handleSizeChange}>
-                    <Radio.Button value = 'small' type="primary" block onClick ={() => this.sellMe()}> 
+                    <Radio.Button loading = 'True' value = 'small' type="primary" block onClick ={() => this.sellMe()}> 
                      Sell 
                     </Radio.Button>
 
