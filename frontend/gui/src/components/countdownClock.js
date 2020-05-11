@@ -24,7 +24,7 @@ class TickingClock extends React.Component {
             <h1>Live Clock</h1>
             <h2> Estern Standard Time</h2>
             <Clock format={'dddd, MMMM Mo, YYYY, HH:mm:ss A'} ticking={true} timezone={'US/Eastern'} />
-            <h3 stlye={{Color:"{color}"}}>{market}</h3>
+            <h3 style={{Color:{color}}}>{market}</h3>
 
         </div>
         )
