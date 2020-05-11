@@ -7,6 +7,9 @@ class PositionsList extends React.Component{
     state = {
         positions: [],
         size : 'small',
+        symbol: '',
+        qty: '',
+        time_in_force: '',
     }
 
     componentDidMount() {
