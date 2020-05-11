@@ -13,6 +13,11 @@ def chart_data(symbol, time):
     data = df.to_dict('records')
     return (data)
 
+def asset_price(symbol):
+    asset = yf.Ticker(symbol)
+    df = asset.history()
+    return (df.iloc[-1]['Close'])
+
 def portfolio_history(data):
     df = pd.DataFrame(data)
     df['date'] = pd.to_datetime(df['timestamp'], unit='s')

@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .keys import *
 import yfinance as yf
-from alpaca.api.data_functions import chart_data, make_recommendation, portfolio_history
+from alpaca.api.data_functions import chart_data, make_recommendation, portfolio_history, asset_price
 
 BASE_URL = 'https://paper-api.alpaca.markets'
 HEADERS = {"APCA-API-KEY-ID" : API_KEY, "APCA-API-SECRET-KEY" : SECRET_KEY}
@@ -58,10 +58,12 @@ def watchlist(request):
         for asset in assets:
             try: 
                 symbol = asset['symbol']
+                price = asset_price(symbol)
                 our_recommendation = make_recommendation(symbol)
-                watchlist_recommendations.append({"symbol" : symbol, "recommendation" : our_recommendation})
+                watchlist_recommendations.append({"symbol" : symbol, "recommendation" : our_recommendation, "price" : price})
             except:
-                watchlist_recommendations.append({"symbol" : symbol, "recommendation" : "NONE"})
+                price = asset_price(symbol)
+                watchlist_recommendations.append({"symbol" : symbol, "recommendation" : "NONE", "price" : price})
         return Response(watchlist_recommendations)
     if request.method == 'POST':
         try:
