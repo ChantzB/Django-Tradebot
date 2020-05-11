@@ -57,8 +57,8 @@ class WatchList extends React.Component{
         const { watchlist } = this.state;
         return(
             <div>
-            <center><h2>Watch List</h2></center>
             <div style={{float:"right", width:"25%", height:"500px", border:'inset', borderWidth:"thick", boxShadow:" 5px 10px 5px grey", backgroundColor:"gainsboro"}}>
+            <center><h2>Watch List</h2></center>
             <Form onSubmit={this.handleFormSubmit}>
                 <Input.Group>
                 <Input style={{width:"75%"}} name="symbol" placeholder="Add to watch" onChange={(event) => this.handleChange(event)}/>
@@ -74,13 +74,9 @@ class WatchList extends React.Component{
                     pagination={{ pageSize: 5}}
                     />
                 </Input.Group>
-                <ul style={{listStyleType:"none", width:"90%"}} >
-                    <li style={{fontSize:"9px"}}>
-                        *Our recommendations are based on hundreds of financial institution's. We do are not responsible for any claims against our recommendation.
-                    </li>
-                </ul>
             </Form>
             </div>
+        
             </div>
         )
     }
