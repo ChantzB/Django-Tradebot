@@ -1,12 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 import { Table, Radio, Result, Button } from 'antd';
-
+import { Redirect } from 'react-router-dom';
 
 class PositionsList extends React.Component{
     state = {
         positions: [],
         size : 'small',
+        symbol: '',
+        qty: '',
+        time_in_force: '',
     }
 
     componentDidMount() {
@@ -29,6 +32,7 @@ class PositionsList extends React.Component{
       };
     
       sellMe() {
+        //return <Redirect to= 'http://localhost:3000/about'/>
         alert('Sold!');
       };
 
@@ -66,20 +70,9 @@ class PositionsList extends React.Component{
                 width: 150,
                 render: (text, record) => (
                 <Radio.Group value={size} onChange={this.handleSizeChange}>
-                    <Radio.Button value = 'small' type="primary" block onClick ={() => this.sellMe()}> 
+                    <Radio.Button loading = 'True' value = 'small' type="secondary" block onClick ={() => this.sellMe()}> 
                      Sell 
                     </Radio.Button>
-
-                    {/* <Result
-    status="success"
-    title="Successfully Purchased Cloud Server ECS!"
-    subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
-    extra={[
-      <Button type="primary" key="console">
-        Go Console
-      </Button>,
-      <Button key="buy">Sell Again</Button>,
-    ]} */}
     
                     <Radio.Button value = 'small' type="primary" block>
                      Buy

@@ -6,7 +6,8 @@ import { Table, Input, Form, Button } from 'antd'
 class WatchList extends React.Component{
     state = {
         watchlist : [],
-        symbol: ''
+        symbol: '', 
+        price: '', 
 
     }
 
@@ -52,6 +53,13 @@ class WatchList extends React.Component{
                 key: 'recommendation',
                 dataIndex: 'recommendation',
                 align:"center",
+              }, 
+              {
+                  title: 'Market Price', 
+                  key: 'price', 
+                  dataIndex: 'current_price', 
+                  align: 'center',
+                  width: 'flex',
               }
         ]
         const { watchlist } = this.state;
