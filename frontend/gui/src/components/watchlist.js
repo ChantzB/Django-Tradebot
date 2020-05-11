@@ -55,11 +55,11 @@ class WatchList extends React.Component{
                 align:"center",
               }, 
               {
-                  title: 'Market Price', 
-                  key: 'price', 
-                  dataIndex: 'current_price', 
-                  align: 'center',
-                  width: 'flex',
+                title: 'Market Price', 
+                key: 'price', 
+                dataIndex: 'price', 
+                align: 'center',
+                width: 'flex',
               }
         ]
         const { watchlist } = this.state;
