@@ -26,6 +26,9 @@ class AccountList extends React.Component{
                 <Row gutter={16}>
                 <Statistic title="Equity" value={ account.equity } precision={2} style={{padding:"10px"}}/>
                 <Statistic title="Buying Power" value={ account.buying_power } precision={2} style={{paddingLeft:"50px", paddingTop:"10px"}}/>
+                <Statistic title="Day Trades" value={ account.daytrade_count } style={{paddingLeft:"70px", paddingTop:"10px", float:"right"}}/>
+                <Statistic title="Day Trading Power" value={ account.daytrading_buying_power } precision={2} style={{paddingLeft:"70px", paddingTop:"10px", float:"right"}}/>
+
                 {/* </Col> */}
                 </Row>
             </div>
