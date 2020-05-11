@@ -72,7 +72,7 @@ class TopView extends React.Component {
                     </Form.Item>
                 </Form></center>
             </div>
-            <div style={{paddingLeft:'40px', float:"left", width:"75%"}}>
+            <div style={{paddingLeft:'40px', float:"left", width:"75.3%"}}>
                 <AccountList/>
             </div>
             <div style={{padding:'40px', }}>
