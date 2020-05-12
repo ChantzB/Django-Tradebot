@@ -58,20 +58,18 @@ class OrderView extends React.Component {
     render(){
         const data = this.state.data
       return (
-        <div>
+        <div style={{paddingTop:'40px'}}>
             <div>
                 <center><Form onSubmit={this.handleFormSubmit} style={{width:"50%"}}>
                     <Form.Item rules={[{ required: true }]}>
                         <Input.Group compact>
                         <Input name="Symbol" placeholder="Stock Search" onChange={(event) => this.handleChange(event)} style={{ width: '20%', backgroundColor: '#E8E8E8' }} />
-                        <Select name="Time"
-                        onChange={this.handleChange} defaultValue="1mo">
-                            <Option value="1mo">1 Month</Option>
-                            <Option value="3mo">3 Months</Option>
-                        </Select>
-                        <Button style={{}}
+                        <Input name="Time" placeholder="Time" onChange={(event) => this.handleChange(event)} style={{ width: '10%', backgroundColor: '#' }} >
+                        </Input>
+                        <Button style={{ backgroundColor: '#4CAF50', border: 'none', color: 'white'}}
                         type="button" onClick={(event) => this.handleFormSubmit(event)}>Search</Button>
                         </Input.Group>
+                        <p style={{fontSize:"12px"}}>Valid Times: 1mo, 3mo, 6mo, 1y</p>
                     </Form.Item>
                 </Form></center>
             </div>
