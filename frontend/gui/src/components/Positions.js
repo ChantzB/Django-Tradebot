@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Table, Radio, Result, Button } from 'antd';
+import { Table, Radio} from 'antd';
 import { Redirect } from 'react-router-dom';
 
 class PositionsList extends React.Component{
@@ -8,8 +8,8 @@ class PositionsList extends React.Component{
         positions: [],
         size : 'small',
         symbol: '',
-        qty: '',
-        time_in_force: '',
+        qty: 1,
+        time_in_force: 'gtc',
     }
 
     componentDidMount() {
@@ -26,14 +26,18 @@ class PositionsList extends React.Component{
         this.setState({ size: e.target.value });
       };
 
-      constructor(props) {
-        super(props);
-        this.sellMe = this.sellMe.bind(this);
-      };
-    
       sellMe() {
-        //return <Redirect to= 'http://localhost:3000/about'/>
+
+        const order = this.state
+
+        axios.post('http://127.0.0.1:8000/api/create_order/', {order})
+        .then(res => 
+            {
+
+            })
+
         alert('Sold!');
+        console.log(this.order.symbol)
       };
 
     render() {
@@ -68,12 +72,13 @@ class PositionsList extends React.Component{
                 {title: 'Trade',
                 key: 'action',
                 width: 150,
+
                 render: (text, record) => (
                 <Radio.Group value={size} onChange={this.handleSizeChange}>
-                    <Radio.Button loading = 'True' value = 'small' type="secondary" block onClick ={() => this.sellMe()}> 
+                    <Radio.Button value = 'small' type="secondary" block onClick ={() => this.sellMe()}> 
                      Sell 
                     </Radio.Button>
-    
+
                     <Radio.Button value = 'small' type="primary" block>
                      Buy
                     </Radio.Button>
