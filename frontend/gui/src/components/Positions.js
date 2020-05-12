@@ -37,7 +37,10 @@ class PositionsList extends React.Component{
             })
 
         alert('Sold!');
-        console.log(this.order.symbol)
+        // <div>
+        // <p> {this.order.symbol} </p>
+        // </div>
+        
       };
 
     render() {
