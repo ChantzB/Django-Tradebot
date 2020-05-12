@@ -9,9 +9,11 @@ const CustomLayout = (props) => {
         <Layout className="layout">
         <br/>
         <Content>
-            <div className="site-layout-content">
+            <div className="site-layout-content" style={{padding:'10px'}}>
+              <div>
               <StockClock/>
               {props.children}
+              </div>
             </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>Trading Bot ©2020 Created by CSC 436</Footer>

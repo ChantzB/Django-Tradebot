@@ -57,28 +57,28 @@ class TopView extends React.Component {
     render(){
         const data = this.state.data
       return (
-        <div>
+        <div style={{paddingTop:'40px'}}>
             <div>
                 <center><Form onSubmit={this.handleFormSubmit} style={{width:"50%"}}>
                     <Form.Item rules={[{ required: true }]}>
                         <Input.Group compact>
                         <Input name="Symbol" placeholder="Stock Search" onChange={(event) => this.handleChange(event)} style={{ width: '20%', backgroundColor: '#E8E8E8' }} />
-                        <Input name="Time" placeholder="Time" onChange={(event) => this.handleChange(event)} style={{ width: '10%', backgroundColor: '#E8E8E8' }} >
+                        <Input name="Time" placeholder="Time" onChange={(event) => this.handleChange(event)} style={{ width: '10%', backgroundColor: '#' }} >
                         </Input>
-                        <Button style={{}}
+                        <Button style={{ backgroundColor: '#4CAF50', border: 'none', color: 'white'}}
                         type="button" onClick={(event) => this.handleFormSubmit(event)}>Search</Button>
                         </Input.Group>
                         <p style={{fontSize:"12px"}}>Valid Times: 1mo, 3mo, 6mo, 1y</p>
                     </Form.Item>
                 </Form></center>
             </div>
-            <div style={{paddingLeft:'40px', float:"left", width:"75.3%"}}>
+            <div style={{paddingLeft:'40px', float:"left", width:"75.2%"}}>
                 <AccountList/>
             </div>
             <div style={{padding:'40px', }}>
                 <WatchList/>
                 <LineChart
-                    style={{paddingRight:"", float:"left", border:'inset', borderWidth:"thick", boxShadow:"5px 10px 5px grey"}}
+                    style={{paddingRight:"", float:"left", border:'inset', borderWidth:"thick", boxShadow:"5px 10px 5px grey", width:'72%'}}
                     width={1000}
                     height={500}
                     data={data}

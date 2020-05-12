@@ -7,10 +7,12 @@ const date = new Date();
 const now = date.getHours() * 60 + date.getMinutes();
 var color = '';
 var market = '';
+var bgColor = '';
 
 if(start <= now && now <= end){
     market = 'Open'
-    color = '#7fff00'  
+    color = '#4CAF50'
+    // bgColor = '#8FBC8F'
 } else {
     market = 'Closed'
     color = 'red'  
@@ -20,13 +22,17 @@ class TickingClock extends React.Component {
 
     render() {
         return(
-        <div style={{ paddingLeft:'40px' }}>
-            <h1>Live Clock</h1>
-            <h2> Eastern Standard Time</h2>
-            <Clock format={'dddd, MMMM Mo, YYYY, HH:mm:ss A'} ticking={true} timezone={'US/Eastern'} />
-            <h3 style={{ color:color }}>
-                {market}
-            </h3>
+        <div style={{ paddingLeft:'40px', border:'inset', borderWidth:"thick", boxShadow:" 5px 10px 5px grey", backgroundColor:"gainsboro"}}>
+                <div style={{float:'right', paddingRight:'40px'}}>
+                <h1>Market Status</h1>
+                <center><h2 style={{ color:color, backgroundColor: bgColor, border:'solid', fontSize:'large' }}>
+                    {market}
+                </h2></center>
+                </div>
+                <h1>Live Clock</h1>
+                <h2> Eastern Standard Time</h2>
+                <Clock format={'dddd, MMMM Mo, YYYY, HH:mm:ss A'} ticking={true} timezone={'US/Eastern'} />
+
         </div>
         )
     }

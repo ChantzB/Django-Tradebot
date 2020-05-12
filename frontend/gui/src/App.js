@@ -20,9 +20,9 @@ class App extends Component{
               Trading Hub
             </h1></center>
           </Header> */}
-          <Header style={{backgroundColor:"#001f4d"}}>
+          <Header style={{backgroundColor:"#8FBC8F"}}>
             <div className="logo" />
-            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} style={{color:"white", backgroundColor:"#001f4d"}}>
+            <Menu theme="light" mode="horizontal" defaultSelectedKeys={['1']} style={{color:"white", backgroundColor:"#8FBC8F"}}>
             <Menu.Item key="1"><Link to='/'>Portfolio</Link></Menu.Item>
             <Menu.Item key="2"><Link to='/orders'>Orders</Link></Menu.Item>
             <Menu.Item key="3"><Link to='/about'>Account</Link></Menu.Item>

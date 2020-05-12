@@ -54,7 +54,7 @@ state = {
 
     return(
       <div>
-        <div style={{width:'71%', float:"left"}}>
+        <div style={{width:'100%', float:"left"}}>
           <h1  style={{ paddingTop:"20px", paddingBottom:"10px"}}> Order History</h1>
           <Table 
           style={{width:"100%" , border:'inset', borderWidth:"thick", boxShadow:" 5px 10px 5px grey", backgroundColor:"gainsboro"}}
