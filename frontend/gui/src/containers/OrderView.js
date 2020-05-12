@@ -79,7 +79,7 @@ class OrderView extends React.Component {
             <div style={{padding:'40px'}}>
                 <OrderForm style={{float:"right"}}/>
                 <LineChart
-                    style={{paddingRight:"", float:"left", border:'inset', borderWidth:"thick", boxShadow:"5px 10px 5px grey"}}
+                    style={{paddingRight:"", float:"left", border:'inset', borderWidth:"thick", boxShadow:"5px 10px 5px grey",width:'72%'}}
                     width={1000}
                     height={500}
                     data={data}
