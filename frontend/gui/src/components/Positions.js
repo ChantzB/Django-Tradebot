@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Table, Radio, Result, Button } from 'antd';
+import { Table, Radio} from 'antd';
 import { Redirect } from 'react-router-dom';
 
 class PositionsList extends React.Component{
@@ -8,8 +8,8 @@ class PositionsList extends React.Component{
         positions: [],
         size : 'small',
         symbol: '',
-        qty: '',
-        time_in_force: '',
+        qty: 1,
+        time_in_force: 'gtc',
     }
 
     componentDidMount() {
@@ -32,6 +32,7 @@ class PositionsList extends React.Component{
             console.log(res);
             console.log(Symbol);
           })
+        alert("SOLD!")
       };
 
     render() {
