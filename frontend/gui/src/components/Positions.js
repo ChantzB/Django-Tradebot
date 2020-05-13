@@ -1,7 +1,11 @@
 import React from 'react';
 import axios from 'axios';
+<<<<<<< HEAD
 import { Table, Radio, Button, Input} from 'antd';
 import { Redirect } from 'react-router-dom';
+=======
+import { Table, Radio} from 'antd';
+>>>>>>> a1131fcc9bf00d06057112f325f4c8bad8f57e43
 
 class PositionsList extends React.Component{
     state = {
@@ -27,7 +31,14 @@ class PositionsList extends React.Component{
          })
       }
     
-      handleFormSubmit(event){
+    decrementCount() {
+        this.setState((state) => {
+          // Important: read `state` instead of `this.state` when updating.
+          return {count: state.qty - 1}
+        });
+      }
+
+    sellMe(event){
         event.preventDefault();
         
         const Symbol = this.state.symbol
@@ -37,7 +48,12 @@ class PositionsList extends React.Component{
             console.log(res);
             console.log(res.data);
           })
+<<<<<<< HEAD
         alert('Sold')
+=======
+        this.decrementCount();
+        alert("SOLD!")
+>>>>>>> a1131fcc9bf00d06057112f325f4c8bad8f57e43
       };
 
     render() {
