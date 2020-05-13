@@ -21,24 +21,20 @@ class PositionsList extends React.Component{
                 console.log(res.data)
             })
     }
-
-    handleSizeChange = e => {
-        this.setState({ size: e.target.value });
-      };
-
-      constructor(props) {
-        super(props);
-        this.sellMe = this.sellMe.bind(this);
-      };
     
-      sellMe() {
-        //return <Redirect to= 'http://localhost:3000/about'/>
-        alert('Sold!');
+    sellMe(event){
+        event.preventDefault();
+        this.setState({ symbol: event.target.value });
+        const Symbol = this.state.symbol
+        console.log(Symbol)
+        axios.post('http://127.0.0.1:8000/api/positions/', { Symbol })
+          .then(res => {
+            console.log(res);
+            console.log(Symbol);
+          })
       };
 
     render() {
-        const { size } = this.state.size;
-            // <Positions data = {this.state.positions}/>
             const columns = [
                 {
                     title: 'Symbol',
@@ -65,21 +61,22 @@ class PositionsList extends React.Component{
                     dataIndex: 'unrealized_pl',
                     width: 100,
                 },
-                {title: 'Trade',
-                key: 'action',
-                width: 150,
-                render: (text, record) => (
-                <Radio.Group value={size} onChange={this.handleSizeChange}>
-                    <Radio.Button loading = 'True' value = 'small' type="secondary" block onClick ={() => this.sellMe()}> 
-                     Sell 
-                    </Radio.Button>
-    
-                    <Radio.Button value = 'small' type="primary" block>
-                     Buy
-                    </Radio.Button>
-                </Radio.Group>
-    ),
-  },                
+                {
+                    title: 'Trade',
+                    key: 'action',
+                    width: 150,
+                    dataIndex: 'Symbol',
+                    render: (dataIndex) => (
+                    <Radio.Group value={dataIndex}>
+                        <Radio.Button loading = 'True' value ={dataIndex} type="secondary" block onClick ={(event) => this.sellMe(event)}> 
+                        Sell 
+                        </Radio.Button>
+                        <Radio.Button value = 'small' type="primary" block>
+                        Buy
+                        </Radio.Button>
+                    </Radio.Group>
+                    ),
+                },                
             ]
             const { positions } = this.state;
         return (
