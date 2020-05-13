@@ -3,6 +3,14 @@ import requests,json
 import pandas as pd
 from datetime import datetime
 
+def round_account(data):
+    df = pd.DataFrame(data)  
+    df['avg_entry_price'] = df['avg_entry_price'].astype(float)
+    df['avg_entry_price'] = df['avg_entry_price'].round(2)
+    df['avg_entry_price'] = df['avg_entry_price'].astype(str)
+    df = df.to_dict('records')
+    return(df)
+
 def chart_data(symbol, time):
     market_data = yf.Ticker(symbol)
     plot_data = market_data.history(period=time)

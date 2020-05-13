@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .keys import *
 import yfinance as yf
-from alpaca.api.data_functions import chart_data, make_recommendation, portfolio_history, asset_price
+from alpaca.api.data_functions import chart_data, make_recommendation, portfolio_history, asset_price, round_account
 
 BASE_URL = 'https://paper-api.alpaca.markets'
 HEADERS = {"APCA-API-KEY-ID" : API_KEY, "APCA-API-SECRET-KEY" : SECRET_KEY}
@@ -21,7 +21,9 @@ def positions(request):
     if request.method == "GET":
         POSITIONS_URL = '{}/v2/positions'.format(BASE_URL)
         r = requests.get(POSITIONS_URL, headers=HEADERS)
-        data = json.loads(r.content)
+        results = json.loads(r.content)
+        data = round_account(results)
+        print(data)
         return Response(data)
     else: #POST
         data = request.data
