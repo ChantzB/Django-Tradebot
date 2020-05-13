@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Table, Radio} from 'antd';
+import { Table, Radio, Button, Input} from 'antd';
 import { Redirect } from 'react-router-dom';
 
 class PositionsList extends React.Component{
@@ -21,18 +21,23 @@ class PositionsList extends React.Component{
                 console.log(res.data)
             })
     }
+    handleChange(event){
+        this.setState({ 
+          [event.target.name]: event.target.value,
+         })
+      }
     
-    sellMe(event){
+      handleFormSubmit(event){
         event.preventDefault();
-        this.setState({ symbol: event.target.value });
+        
         const Symbol = this.state.symbol
-        console.log(Symbol)
+    
         axios.post('http://127.0.0.1:8000/api/positions/', { Symbol })
           .then(res => {
             console.log(res);
-            console.log(Symbol);
+            console.log(res.data);
           })
-        alert("SOLD!")
+        alert('Sold')
       };
 
     render() {
@@ -63,19 +68,21 @@ class PositionsList extends React.Component{
                     width: 100,
                 },
                 {
-                    title: 'Trade',
+                    title: '*Type symbol to confirm sale',
                     key: 'action',
-                    width: 150,
+                    width: 115,
                     dataIndex: 'Symbol',
                     render: (dataIndex) => (
-                    <Radio.Group value={dataIndex}>
-                        <Radio.Button loading = 'True' value ={dataIndex} type="secondary" block onClick ={(event) => this.sellMe(event)}> 
+                    <center><Radio.Group value={dataIndex}>
+                        <Input style={{width:'60px'}} name="symbol" placeholder="" onChange={(event) => this.handleChange(event)}/>
+                        <Button style={{backgroundColor:'#4CAF50', color:'white'}}type="button" onClick={(event) => this.handleFormSubmit(event)}>Sell</Button>
+                        {/* <Radio.Button loading = 'True' value ={dataIndex} type="secondary" block onClick ={(event) => this.sellMe(event)}> 
                         Sell 
                         </Radio.Button>
                         <Radio.Button value = 'small' type="primary" block>
                         Buy
-                        </Radio.Button>
-                    </Radio.Group>
+                        </Radio.Button> */}
+                    </Radio.Group></center>
                     ),
                 },                
             ]
