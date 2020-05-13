@@ -48,12 +48,7 @@ class PositionsList extends React.Component{
             console.log(res);
             console.log(res.data);
           })
-<<<<<<< HEAD
         alert('Sold')
-=======
-        this.decrementCount();
-        alert("SOLD!")
->>>>>>> a1131fcc9bf00d06057112f325f4c8bad8f57e43
       };
 
     render() {
