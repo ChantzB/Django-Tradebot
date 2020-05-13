@@ -1,11 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-<<<<<<< HEAD
 import { Table, Radio, Button, Input} from 'antd';
 import { Redirect } from 'react-router-dom';
-=======
-import { Table, Radio} from 'antd';
->>>>>>> a1131fcc9bf00d06057112f325f4c8bad8f57e43
 
 class PositionsList extends React.Component{
     state = {
