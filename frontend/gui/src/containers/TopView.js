@@ -37,6 +37,7 @@ class TopView extends React.Component {
         [event.target.name]: event.target.value,
         [event.target.name]: event.target.value,
        })
+
     }
     
     handleFormSubmit(event){
@@ -52,6 +53,10 @@ class TopView extends React.Component {
           // console.log(market_search);
           console.log(res.data);
         })
+        this.setState({
+          Symbol: '',
+          Time: '',
+        });
     };
   
     render(){
@@ -62,8 +67,8 @@ class TopView extends React.Component {
                 <center><Form onSubmit={this.handleFormSubmit} style={{width:"50%"}}>
                     <Form.Item rules={[{ required: true }]}>
                         <Input.Group compact>
-                        <Input name="Symbol" placeholder="Stock Search" onChange={(event) => this.handleChange(event)} style={{ width: '20%', backgroundColor: '#E8E8E8' }} />
-                        <Input name="Time" placeholder="Time" onChange={(event) => this.handleChange(event)} style={{ width: '10%', backgroundColor: '#' }} >
+                        <Input name="Symbol" placeholder="Stock Search" value={this.state.Symbol} onChange={(event) => this.handleChange(event)} style={{ width: '20%', backgroundColor: '#E8E8E8' }} />
+                        <Input name="Time" placeholder="Time" value={this.state.Time} onChange={(event) => this.handleChange(event)} style={{ width: '10%', backgroundColor: '#' }} >
                         </Input>
                         <Button style={{ backgroundColor: '#4CAF50', border: 'none', color: 'white'}}
                         type="button" onClick={(event) => this.handleFormSubmit(event)}>Search</Button>
@@ -72,13 +77,13 @@ class TopView extends React.Component {
                     </Form.Item>
                 </Form></center>
             </div>
-            <div style={{paddingLeft:'40px', float:"left", width:"75.2%"}}>
+            <div style={{paddingLeft:'40px', float:"left", width:"76.2%"}}>
                 <AccountList/>
             </div>
             <div style={{padding:'40px', }}>
                 <WatchList/>
                 <LineChart
-                    style={{paddingRight:"", float:"left", border:'inset', borderWidth:"thick", boxShadow:"5px 10px 5px grey", width:'72%'}}
+                    style={{paddingRight:"", float:"left", border:'inset', borderWidth:"thick", boxShadow:"5px 10px 5px grey", width:'73%'}}
                     width={1000}
                     height={500}
                     data={data}

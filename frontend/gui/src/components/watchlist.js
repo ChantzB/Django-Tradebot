@@ -79,7 +79,7 @@ class WatchList extends React.Component{
                     class="watchlist" 
                     columns={columns} 
                     dataSource={watchlist} 
-                    pagination={{ pageSize: 5}}
+                    pagination={{ pageSize: 4}}
                     />
                 </Input.Group>
             </Form>
