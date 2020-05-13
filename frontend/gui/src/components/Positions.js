@@ -22,6 +22,13 @@ class PositionsList extends React.Component{
             })
     }
     
+    decrementCount() {
+        this.setState((state) => {
+          // Important: read `state` instead of `this.state` when updating.
+          return {count: state.qty - 1}
+        });
+      }
+
     sellMe(event){
         event.preventDefault();
         this.setState({ symbol: event.target.value });
@@ -32,6 +39,7 @@ class PositionsList extends React.Component{
             console.log(res);
             console.log(Symbol);
           })
+        this.decrementCount();
         alert("SOLD!")
       };
 
