@@ -21,7 +21,7 @@ class OrderView extends React.Component {
     state = {
       data: [],
       Symbol: '',
-      Time: '1mo',
+      Time: '',
     }
   
     componentDidMount() {
@@ -50,9 +50,11 @@ class OrderView extends React.Component {
           this.setState({
             data: res.data
         });
-          // console.log(market_search);
-          console.log(res.data);
-        })
+        this.setState({
+          Symbol: '',
+          Time: '',
+        });
+      })
     };
   
     render(){
@@ -63,8 +65,8 @@ class OrderView extends React.Component {
                 <center><Form onSubmit={this.handleFormSubmit} style={{width:"50%"}}>
                     <Form.Item rules={[{ required: true }]}>
                         <Input.Group compact>
-                        <Input name="Symbol" placeholder="Stock Search" onChange={(event) => this.handleChange(event)} style={{ width: '20%', backgroundColor: '#E8E8E8' }} />
-                        <Input name="Time" placeholder="Time" onChange={(event) => this.handleChange(event)} style={{ width: '10%', backgroundColor: '#' }} >
+                        <Input name="Symbol" placeholder="Stock Search" value={this.state.Symbol} onChange={(event) => this.handleChange(event)} style={{ width: '20%', backgroundColor: '#E8E8E8' }} />
+                        <Input name="Time" placeholder="Time" value={this.state.Time} onChange={(event) => this.handleChange(event)} style={{ width: '10%', backgroundColor: '#' }} >
                         </Input>
                         <Button style={{ backgroundColor: '#4CAF50', border: 'none', color: 'white'}}
                         type="button" onClick={(event) => this.handleFormSubmit(event)}>Search</Button>

@@ -23,7 +23,6 @@ def positions(request):
         r = requests.get(POSITIONS_URL, headers=HEADERS)
         results = json.loads(r.content)
         data = round_account(results)
-        print(data)
         return Response(data)
     else: #POST
         data = request.data

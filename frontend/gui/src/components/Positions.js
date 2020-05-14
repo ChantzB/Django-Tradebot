@@ -6,10 +6,11 @@ import { Redirect } from 'react-router-dom';
 class PositionsList extends React.Component{
     state = {
         positions: [],
-        size : 'small',
         symbol: '',
-        qty: 1,
-        time_in_force: 'gtc',
+        qty: '',
+        side: 'sell',
+        type: 'market',
+        time_in_force:'gtc',
     }
 
     componentDidMount() {
@@ -24,27 +25,37 @@ class PositionsList extends React.Component{
     handleChange(event){
         this.setState({ 
           [event.target.name]: event.target.value,
+          [event.target.name]: event.target.value,
          })
       }
     
-    decrementCount() {
-        this.setState((state) => {
-          // Important: read `state` instead of `this.state` when updating.
-          return {count: state.qty - 1}
-        });
-      }
+    // decrementCount() {
+    //     this.setState((state) => {
+    //       // Important: read `state` instead of `this.state` when updating.
+    //       return {count: state.qty - 1}
+    //     });
+    //   }
 
-    sellMe(event){
-        event.preventDefault();
+    handleFormSubmit(event){
         
-        const Symbol = this.state.symbol
-    
-        axios.post('http://127.0.0.1:8000/api/positions/', { Symbol })
+        const order = [
+            this.state.symbol,
+            this.state.qty,
+            this.state.side,
+            this.state.type,
+            this.state.time_in_force
+        ]
+     
+        axios.post('http://127.0.0.1:8000/api/create_order/', { order })
           .then(res => {
             console.log(res);
             console.log(res.data);
           })
         alert('Sold')
+        this.setState({
+            symbol: '',
+            qty: '',
+          });
       };
 
     render() {
@@ -75,21 +86,20 @@ class PositionsList extends React.Component{
                     width: 100,
                 },
                 {
-                    title: '*Type symbol to confirm sale',
+                    title: 'Sell - Type symbol to confirm*',
                     key: 'action',
                     width: 115,
                     dataIndex: 'Symbol',
-                    render: (dataIndex) => (
-                    <center><Radio.Group value={dataIndex}>
-                        <Input style={{width:'60px'}} name="symbol" placeholder="" onChange={(event) => this.handleChange(event)}/>
-                        <Button style={{backgroundColor:'#4CAF50', color:'white'}}type="button" onClick={(event) => this.handleFormSubmit(event)}>Sell</Button>
-                        {/* <Radio.Button loading = 'True' value ={dataIndex} type="secondary" block onClick ={(event) => this.sellMe(event)}> 
-                        Sell 
-                        </Radio.Button>
-                        <Radio.Button value = 'small' type="primary" block>
-                        Buy
-                        </Radio.Button> */}
-                    </Radio.Group></center>
+                    render: (title) => (
+                    <div>
+                        <Radio.Group value={title}>
+                            <Input style={{width:'50px'}} name="qty" placeholder="Qty" onChange={(event) => this.handleChange(event)}/>
+                             :
+                            <Input style={{width:'70px'}} name="symbol" placeholder="Symbol" onChange={(event) => this.handleChange(event)}/>
+                            <Button style={{backgroundColor:'#4CAF50', color:'white'}}type="button" onClick={(event) => this.handleFormSubmit(event)}>Sell</Button>
+                        </Radio.Group>
+
+                    </div>
                     ),
                 },                
             ]

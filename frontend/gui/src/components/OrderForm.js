@@ -35,6 +35,14 @@ class OrderForm extends React.Component {
         console.log(res);
         console.log(res.data);
       })
+      this.setState({
+        symbol: '',
+        qty: '',
+        side: 'buy',
+        type: '',
+        time_in_force:'',
+      });
+    alert("stock bought")
   };
 
   render(){
@@ -52,16 +60,16 @@ class OrderForm extends React.Component {
           style={{height:"600px"}}
           >
           <Form.Item label="Stock Symbol">
-            <Input name="symbol" placeholder="symbol" onChange={(event) => this.handleChange(event)}/>
+            <Input name="symbol" placeholder="symbol" value={this.state.symbol} onChange={(event) => this.handleChange(event)}/>
           </Form.Item>
           <Form.Item label="Quantity">
-            <Input name="qty" placeholder="quantity" onChange={(event) => this.handleChange(event)}/>
+            <Input name="qty" placeholder="quantity" value={this.state.qty} onChange={(event) => this.handleChange(event)}/>
           </Form.Item>
           <Form.Item label="Type">
-            <Input name="type" placeholder="type" onChange={(event) => this.handleChange(event)}/>
+            <Input name="type" placeholder="type" value={this.state.type} onChange={(event) => this.handleChange(event)}/>
           </Form.Item>
           <Form.Item label="Time in Force">
-            <Input name="time_in_force" placeholder="type" onChange={(event) => this.handleChange(event)}/>
+            <Input name="time_in_force" placeholder="type" value={this.state.time_in_force} onChange={(event) => this.handleChange(event)}/>
             gtc: "Good till canceled" <br/>
             day: Order expires at end of day
           </Form.Item>
