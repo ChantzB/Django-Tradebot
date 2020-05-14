@@ -51,7 +51,7 @@ class PositionsList extends React.Component{
             console.log(res);
             console.log(res.data);
           })
-        alert('Sold')
+        alert('Sold!')
         this.setState({
             symbol: '',
             qty: '',
