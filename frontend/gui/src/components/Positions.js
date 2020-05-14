@@ -5,12 +5,12 @@ import { Redirect } from 'react-router-dom';
 
 class PositionsList extends React.Component{
     state = {
-        positions: [],
         symbol: '',
         qty: '',
         side: 'sell',
         type: 'market',
         time_in_force:'gtc',
+        positions: [],
     }
 
     componentDidMount() {
@@ -38,13 +38,13 @@ class PositionsList extends React.Component{
 
     handleFormSubmit(event){
         
-        const order = [
-            this.state.symbol,
-            this.state.qty,
-            this.state.side,
-            this.state.type,
-            this.state.time_in_force
-        ]
+        const order = {
+            'symbol' : this.state.symbol,
+            'qty' : this.state.qty,
+            'side' : this.state.side,
+            'type' : this.state.type,
+            'time_in_force' : this.state.time_in_force
+        }
      
         axios.post('http://127.0.0.1:8000/api/create_order/', { order })
           .then(res => {
