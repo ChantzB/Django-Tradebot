@@ -25,7 +25,6 @@ class App extends Component{
             <Menu theme="light" mode="horizontal" defaultSelectedKeys={['1']} style={{color:"white", backgroundColor:"#8FBC8F"}}>
             <Menu.Item key="1"><Link to='/'>Portfolio</Link></Menu.Item>
             <Menu.Item key="2"><Link to='/orders'>Orders</Link></Menu.Item>
-            <Menu.Item key="3"><Link to='/about'>Account</Link></Menu.Item>
             </Menu>
           </Header>
             <Route path="/" exact render= {
@@ -44,17 +43,6 @@ class App extends Component{
                 return (
                   <CustomLayout>
                     <OrderView />
-                  </CustomLayout>
-                );
-              }
-            }/>
-            <Route path="/about" exact render= {
-              () => {
-                return (
-                  <CustomLayout>
-                    <h1>Account </h1>
-                    <br/>
-                    {/* <AccountList/> */}
                   </CustomLayout>
                 );
               }
